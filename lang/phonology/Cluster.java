@@ -1,10 +1,15 @@
 package lang.phonology;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /* Consonant cluster to represent onset or coda of syllable - 1 or more possibly optional consonants */
 public class Cluster {
 	private int slots;
+	
+	private boolean geminationAllowed;
+	private List<Consonant> possibleSecondValues;
 	
 	private Random random;
 	
@@ -12,11 +17,35 @@ public class Cluster {
 	public Cluster(int slots, Random random) {
 		this.slots = slots;
 		this.random = random;
+		
+		generateStructure();
 	}
 	
 	// General constructor for empty coda
 	public Cluster() {
 		slots = 0;
+	}
+	
+	private void generateStructure() {
+		possibleSecondValues = new ArrayList<Consonant>();
+		
+		if (slots > 1) {
+			geminationAllowed = random.nextBoolean();
+			
+			// Liquids
+			if (random.nextBoolean()) {
+				possibleSecondValues.add(Consonant.VD_ALVEOLAR_LAT_APPROXIMANT);
+				possibleSecondValues.add(Consonant.VD_ALVEOLAR_APPROXIMANT);
+			}
+			
+			// Glides
+			if (random.nextBoolean()) {
+				possibleSecondValues.add(Consonant.VD_LABIO_VELAR_APPROXIMANT);
+				possibleSecondValues.add(Consonant.VD_PALATAL_APPROXIMANT);
+			}
+		} else {
+			geminationAllowed = false;
+		}
 	}
 	
 	// Turns cluster into string of Cs with parentheses showing optionality
@@ -29,4 +58,6 @@ public class Cluster {
 		
 		return cluster;
 	}
+	
+	public boolean geminationAllowed() { return geminationAllowed; }
 }

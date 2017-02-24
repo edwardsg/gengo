@@ -16,6 +16,8 @@ public class LanguageGenerator {
 	private static Language language;
 	
 	public static void main(String[] args) {
+		displayConsoleMenu();
+		
 		language = new Language();
 		
 		createHTML("lang");
@@ -23,25 +25,31 @@ public class LanguageGenerator {
 		printToConsole();
 	}
 	
+	private static void displayConsoleMenu() {
+		System.out.println("\nProcedural Language Generator by Gabriel Edwards\n");
+	}
+	
 	// Console output
 	private static void printToConsole() {
+		System.out.println();
+		
 		// Print consonants in language
+		System.out.println("Consonants (" + language.phonology().consonantInventory() + "):");
 		for (Consonant consonant : language.phonology().consonants()) {
 			System.out.println(consonant.symbol() + "\t" + consonant);
 		}
 		
 		// Print vowels in language
+		System.out.println("\nVowels (" + language.phonology().vowelInventory() + "):");
 		for (Vowel vowel : language.phonology().vowels()) {
 			System.out.println(vowel.symbol() + "\t" + vowel);
 		}
 		
 		// Print syllable structure
-		System.out.println("Syllable structure: " + language.phonology().syllableStructure());
+		System.out.println("\nSyllable structure: " + language.phonology().syllableStructure());
 		
 		// Additional information
-		System.out.println("Number of consonants: " + language.phonology().consonantInventory());
-		System.out.println("Number of vowels: " + language.phonology().vowelInventory());
-		System.out.println("Seed: " + language.seed());
+		System.out.println("\nSeed: " + language.seed());
 	}
 	
 	// Output an HTML file containing the details of the language
@@ -111,6 +119,8 @@ public class LanguageGenerator {
 			writer.write("</html>");
 			
 			writer.close();
+			
+			System.out.println("Created HTML file.");
 		} catch (IOException e) {
 			System.err.println("Problem creating html file");
 		}
