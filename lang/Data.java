@@ -40,7 +40,7 @@ public class Data {
 		totalRange = weights[0];
 		int i;
 		for (i = 0; totalRange < dart && i < weights.length - 1; ++i)
-			totalRange += weights[i];
+			totalRange += weights[i + 1];
 		
 		return i;
 	}

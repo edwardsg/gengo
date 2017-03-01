@@ -2,13 +2,13 @@ package lang;
 
 import java.util.Random;
 
+import lang.lexicon.Lexicon;
 import lang.phonology.Phonology;
 
 /* Contains all aspects of a single language */
 public class Language {
 	private Phonology phonology;
 	private Lexicon lexicon;
-	private Dictionary dictionary;
 	
 	private long seed;
 	private Random random;
@@ -31,13 +31,11 @@ public class Language {
 		random = new Random(seed);
 		
 		phonology = new Phonology(random);
-		lexicon = new Lexicon();
-		dictionary = new Dictionary();
+		lexicon = new Lexicon(random, phonology);
 	}
 	
 	// Getters
 	public Phonology phonology() { return phonology; }
 	public Lexicon lexicon() { return lexicon; }
-	public Dictionary dictionary() { return dictionary; }
 	public long seed() { return seed; }
 }

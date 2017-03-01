@@ -54,4 +54,8 @@ public class SyllableStructure {
 	public String toString() {
 		return "" + onset + nucleus + coda;
 	}
+	
+	public Cluster onset() { return onset; }
+	public Nucleus nucleus() { return nucleus; }
+	public Cluster coda() { return coda; }
 }

@@ -5,7 +5,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.util.Map.Entry;
 
+import lang.lexicon.Prime;
 import lang.phonology.Consonant;
 import lang.phonology.Vowel;
 
@@ -47,6 +49,11 @@ public class LanguageGenerator {
 		
 		// Print syllable structure
 		System.out.println("\nSyllable structure: " + language.phonology().syllableStructure());
+		
+		// Semantic roots
+		System.out.println("\nWord roots: ");
+		for (Entry<Prime, String> entry : language.lexicon().roots().entrySet())
+			System.out.println(entry.getKey().name() + ": " + entry.getValue());
 		
 		// Additional information
 		System.out.println("\nSeed: " + language.seed());
@@ -103,9 +110,23 @@ public class LanguageGenerator {
 			// Syllable structure
 			writer.write("\n");
 			writer.write("\t\t<p>\n");
-			writer.write("\t\tSyllable structure: <br>");
+			writer.write("\t\tSyllable structure: <br>\n");
 			writer.write(String.format("<font size=\"%d\"> ", HTML_FONT_SIZE));
 			writer.write("" + language.phonology().syllableStructure() + " </font>\n");
+			
+			/* Lexicon */
+			
+			writer.write("\n");
+			writer.write("\t\t<p>\n");
+			writer.write("\t\tWord roots: <br>\n");
+			for (Entry<Prime, String> entry : language.lexicon().roots().entrySet()) {
+				writer.write(entry.getKey().name() + ": ");
+				
+				for (char c : entry.getValue().toCharArray())
+					writer.write("&#" + (int) c);
+				
+				writer.write(" <br>\n");
+			}
 			
 			/* Footer */
 			

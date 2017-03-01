@@ -59,5 +59,6 @@ public class Cluster {
 		return cluster;
 	}
 	
+	public int slots() { return slots; }
 	public boolean geminationAllowed() { return geminationAllowed; }
 }
