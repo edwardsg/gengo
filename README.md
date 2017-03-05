@@ -1,2 +1,2 @@
-# lang-gen
-Procedural language generator
+# Gengo
+A procedural language generator
