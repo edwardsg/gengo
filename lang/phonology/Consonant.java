@@ -205,6 +205,7 @@ public enum Consonant {
 	private static final boolean PALATALIZED = true;
 	private static final boolean PRENASALIZED = true;
 	
+	private final Feature[] features;
 	private final boolean labialized;
 	private final Voice voice;
 	private final boolean aspirated;
@@ -217,6 +218,7 @@ public enum Consonant {
 	
 	// Constructors for various features if present - aspiration, ejective, labialization
 	private Consonant(Voice voice, Place place, Manner manner, int occurrence, String symbol) {
+		features = new Feature[] { voice, place, manner };
 		labialized = false;
 		this.voice = voice;
 		aspirated = false;
@@ -229,6 +231,7 @@ public enum Consonant {
 	}
 	
 	private Consonant(Voice voice, boolean aspirated, Place place, Manner manner, int occurrence, String symbol) {
+		features = new Feature[] { voice, place, manner };
 		labialized = false;
 		this.voice = voice;
 		this.aspirated = aspirated;
@@ -241,6 +244,7 @@ public enum Consonant {
 	}
 	
 	private Consonant(Voice voice, Place place, boolean ejective, Manner manner, int occurrence, String symbol) {
+		features = new Feature[] { voice, place, manner };
 		labialized = false;
 		this.voice = voice;
 		aspirated = false;
@@ -253,6 +257,7 @@ public enum Consonant {
 	}
 	
 	private Consonant(boolean labialized, Voice voice, Place place, Manner manner, int occurrence, String symbol) {
+		features = new Feature[] { voice, place, manner };
 		this.labialized = labialized;
 		this.voice = voice;
 		aspirated = false;
@@ -265,6 +270,7 @@ public enum Consonant {
 	}
 	
 	private Consonant(boolean labialized, Voice voice, boolean aspirated, Place place, Manner manner, int occurrence, String symbol) {
+		features = new Feature[] { voice, place, manner };
 		this.labialized = labialized;
 		this.voice = voice;
 		this.aspirated = aspirated;
@@ -277,6 +283,7 @@ public enum Consonant {
 	}
 	
 	private Consonant(boolean labialized, Voice voice, Place place, boolean ejective, Manner manner, int occurrence, String symbol) {
+		features = new Feature[] { voice, place, manner };
 		this.labialized = labialized;
 		this.voice = voice;
 		aspirated = false;
@@ -286,6 +293,23 @@ public enum Consonant {
 		this.occurrence = occurrence;
 		probability = (double) occurrence / Data.LANGUAGE_SAMPLE_SIZE;
 		this.symbol = symbol;
+	}
+	
+	public boolean hasFeature(Feature feature) {
+		for (Feature f : features)
+			if (f == feature)
+				return true;
+		
+		return false;
+	}
+	
+	public Consonant dentalize() {
+		if (this.place == Place.ALVEOLAR)
+			for (Consonant consonant : Consonant.values())
+				if (consonant.place() == Place.DENTAL && consonant.manner == this.manner)
+					return consonant;
+			
+		return this;	
 	}
 	
 	// Getters
@@ -312,8 +336,10 @@ public enum Consonant {
 	
 	/* Consonant features - each value has a string name */
 	
+	public interface Feature {}
+	
 	// Use of vocal cords during consonant's duration
-	public static enum Voice {
+	public static enum Voice implements Feature {
 		VOICELESS("Voiceless"), VOICED("Voiced"), BREATHY("Breathy voiced");
 		
 		private final String name;
@@ -324,7 +350,7 @@ public enum Consonant {
 	}
 	
 	// Release of air along with consonant
-	public static enum Aspiration {
+	public static enum Aspiration  implements Feature {
 		UNASPIRATED("Unaspirated"), ASPIRATED("Aspirated");
 		
 		private final String name;
@@ -335,7 +361,7 @@ public enum Consonant {
 	}
 	
 	// Placement of release - either tongue or other part of vocal tract
-	public static enum Place {
+	public static enum Place implements Feature {
 		BILABIAL("Bilabial"), LABIO_VELAR("Labio-velar"), LABIODENTAL("Labiodental"), LINGUO_LABIAL("Linguo-labial"),
 		DENTAL("Dental"), POSTALVEOLAR("Postalveolar"), ALVEOLAR("Alveolar"), PALATO_ALVEOLAR("Palato-alveolar"), RETROFLEX("Retroflex"),
 		ALVEOLO_PALATAL("Alveolo-palatal"), PALATAL("Palatal"), VELAR("Velar"), UVULAR("Uvular"),
@@ -349,7 +375,7 @@ public enum Consonant {
 	}
 	
 	// Manner in which air is released
-	public static enum Manner {
+	public static enum Manner implements Feature {
 		NASAL("Nasal"), STOP("Stop"), SIB_AFFRICATE("Sibilant affricate"), NONSIB_AFFRICATE("Non-sibilant affricate"),
 		SIB_FRICATIVE("Sibilant fricative"), NONSIB_FRICATIVE("Non-sibilant fricative"), APPROXIMANT("Approximant"),
 		FLAP("Flap"), TRILL("Trill"), LAT_AFFRICATE("Lateral affricate"), LAT_FRICATIVE("Lateral fricative"),

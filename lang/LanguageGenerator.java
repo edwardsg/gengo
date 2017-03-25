@@ -8,8 +8,11 @@ import java.io.Writer;
 import java.util.Map.Entry;
 
 import lang.lexicon.Prime;
+import lang.lexicon.Root;
 import lang.phonology.Consonant;
+import lang.phonology.ConsonantPhoneme;
 import lang.phonology.Vowel;
+import lang.phonology.VowelPhoneme;
 
 /* Main class */
 public class LanguageGenerator {
@@ -37,14 +40,20 @@ public class LanguageGenerator {
 		
 		// Print consonants in language
 		System.out.println("Consonants (" + language.phonology().consonantInventory() + "):");
-		for (Consonant consonant : language.phonology().consonants()) {
-			System.out.println(consonant.symbol() + "\t" + consonant);
+		for (ConsonantPhoneme consonant : language.phonology().consonants()) {
+			System.out.print(consonant.symbol() + "\t");
+			for (Consonant c : consonant.allophones())
+				System.out.print("/" + c.symbol() + "/ ");
+			System.out.println();
 		}
 		
 		// Print vowels in language
 		System.out.println("\nVowels (" + language.phonology().vowelInventory() + "):");
-		for (Vowel vowel : language.phonology().vowels()) {
-			System.out.println(vowel.symbol() + "\t" + vowel);
+		for (VowelPhoneme vowel : language.phonology().vowels()) {
+			System.out.print(vowel.symbol() + "\t");
+			for (Vowel v : vowel.allophones())
+				System.out.print("/" + v.symbol() + "/ ");
+			System.out.println();
 		}
 		
 		// Print syllable structure
@@ -52,8 +61,8 @@ public class LanguageGenerator {
 		
 		// Semantic roots
 		System.out.println("\nWord roots: ");
-		for (Entry<Prime, String> entry : language.lexicon().roots().entrySet())
-			System.out.println(entry.getKey().name() + ": " + entry.getValue());
+		for (Entry<Prime, Root> entry : language.lexicon().roots().entrySet())
+			System.out.println(entry.getKey().name() + ": " + entry.getValue().root());
 		
 		// Additional information
 		System.out.println("\nSeed: " + language.seed());
@@ -77,34 +86,54 @@ public class LanguageGenerator {
 			// Consonants
 			writer.write("\t\t<p>\n");
 			writer.write("\t\tConsonants (" + language.phonology().consonantInventory() + "): <br>\n");
-			for (Consonant consonant : language.phonology().consonants()) {
+			for (ConsonantPhoneme phoneme : language.phonology().consonants()) {
 				writer.write("\t\t");
 				
 				writer.write(String.format("<font size=\"%d\"> ", HTML_FONT_SIZE));
 				
-				for (char c : consonant.symbol().toCharArray())
+				for (char c : phoneme.symbol().toCharArray())
 					writer.write("&#" + (int) c);
 				
 				writer.write(" </font> ");
 				
-				writer.write(consonant.toString() + " <br>\n");
+				// Allophones
+				for (Consonant consonant : phoneme.allophones()) {
+					writer.write("/");
+					for (char c : consonant.symbol().toCharArray())
+						writer.write("&#" + (int) c);
+					writer.write("/ ");
+					
+					writer.write(consonant.toString());
+				}
+				
+				writer.write("<br>\n");
 			}
 			
 			// Vowels
 			writer.write("\n");
 			writer.write("\t\t<p>\n");
 			writer.write("\t\tVowels (" + language.phonology().vowelInventory() + "): <br>\n");
-			for (Vowel vowel : language.phonology().vowels()) {
+			for (VowelPhoneme phoneme : language.phonology().vowels()) {
 				writer.write("\t\t");
 				
 				writer.write(String.format("<font size=\"%d\"> ", HTML_FONT_SIZE));
 				
-				for (char c : vowel.symbol().toCharArray())
+				for (char c : phoneme.symbol().toCharArray())
 					writer.write("&#" + (int) c);
 				
 				writer.write(" </font> ");
 				
-				writer.write(" " + vowel.toString() + " <br>\n");
+				// Allophones
+				for (Vowel vowel : phoneme.allophones()) {
+					writer.write("/");
+					for (char c : vowel.symbol().toCharArray())
+						writer.write("&#" + (int) c);
+					writer.write("/ ");
+					
+					writer.write(vowel.toString());
+				}
+				
+				writer.write("<br>\n");
 			}
 			
 			// Syllable structure
@@ -119,10 +148,10 @@ public class LanguageGenerator {
 			writer.write("\n");
 			writer.write("\t\t<p>\n");
 			writer.write("\t\tWord roots: <br>\n");
-			for (Entry<Prime, String> entry : language.lexicon().roots().entrySet()) {
+			for (Entry<Prime, Root> entry : language.lexicon().roots().entrySet()) {
 				writer.write(entry.getKey().name() + ": ");
 				
-				for (char c : entry.getValue().toCharArray())
+				for (char c : entry.getValue().root().toCharArray())
 					writer.write("&#" + (int) c);
 				
 				writer.write(" <br>\n");

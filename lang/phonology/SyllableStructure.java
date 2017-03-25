@@ -15,10 +15,10 @@ public class SyllableStructure {
 	private Nucleus nucleus;
 	private Cluster coda;
 	
-	private List<Consonant> consonants;
-	private List<Vowel> vowels;
+	private List<ConsonantPhoneme> consonants;
+	private List<VowelPhoneme> vowels;
 	
-	public SyllableStructure(List<Consonant> consonants, List<Vowel> vowels, Random random) {
+	public SyllableStructure(List<ConsonantPhoneme> consonants, List<VowelPhoneme> vowels, Random random) {
 		this.random = random;
 		this.consonants = consonants;
 		this.vowels = vowels;
@@ -29,7 +29,7 @@ public class SyllableStructure {
 	// Create more or less complex syllable structure based on WALS data
 	private void createSyllableStructure() {
 		// Choose complexity of 0, 1, or 2 based real world occurrence
-		int syllableComplexity = Data.chooseIndexByWeights(complexityWeights, random);
+		int syllableComplexity = Data.chooseIndexByWeights(random, complexityWeights);
 		
 		// Syllable nucleus is essentially the same for every language
 		nucleus = new Nucleus(random);
