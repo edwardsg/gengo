@@ -1,4 +1,4 @@
-package lang;
+ package lang;
 
 import java.util.Random;
 
@@ -24,6 +24,8 @@ public class Data {
 	public static final double MAX_CONSONANT_VOWEL_RATIO = 29;
 	public static final double[] CONSONANT_VOWEL_RATIOS = { MIN_CONSONANT_VOWEL_RATIO, 2.0, 2.75, 4.5, 6.5 };
 	public static final int[] CONSONANT_VOWEL_RATIO_FREQUENCIES = { 58, 101, 234, 102, 69 };
+	
+	/* Consonants */
 	
 	// Consonant groupings
 	public static final int[] VOICING_CONTRAST_WEIGHTS = { 182, 189, 38, 158 };
@@ -64,24 +66,36 @@ public class Data {
 			Consonant.VD_ALVEOLAR_LAT_APPROXIMANT, Consonant.VD_RETROFLEX_LAT_APPROXIMANT,
 			Consonant.VD_PALATAL_LAT_APPROXIMANT, Consonant.VD_ALVEOLAR_LAT_FLAP,
 			Consonant.VD_RETROFLEX_LAT_FLAP };
+	public static final Consonant[] LATERAL_OBSTRUENTS = { Consonant.VL_ALVEOLAR_LAT_AFFRICATE,
+			Consonant.VL_ALVEOLAR_LAT_FRICATIVE, Consonant.VD_ALVEOLAR_LAT_FRICATIVE };
+	public static final Consonant[] LATERAL_OTHERS = { Consonant.VD_RETROFLEX_LAT_APPROXIMANT,
+			Consonant.VD_PALATAL_LAT_APPROXIMANT, Consonant.VD_ALVEOLAR_LAT_FLAP,
+			Consonant.VD_RETROFLEX_LAT_FLAP };
 	
 	// By place of articulation
 	public static final Consonant[] BILABIALS = { Consonant.VD_BILABIAL_NASAL, Consonant.VL_BILABIAL_STOP,
-			Consonant.BVD_BILABIAL_STOP, Consonant.VL_BILABIAL_FRICATIVE, Consonant.VD_BILABIAL_FRICATIVE,
-			Consonant.VD_BILABIAL_APPROXIMANT };
+			Consonant.BVD_BILABIAL_STOP, Consonant.VL_BILABIAL_FRICATIVE, Consonant.VD_BILABIAL_FRICATIVE };
 	
 	public static final Consonant[] UVULARS = { Consonant.VL_UVULAR_STOP, Consonant.VD_UVULAR_STOP,
 			Consonant.VL_UVULAR_FRICATIVE, Consonant.VD_UVULAR_FRICATIVE };
 	public static final Consonant[] UVULAR_STOPS = { Consonant.VL_UVULAR_STOP, Consonant.VD_UVULAR_STOP };
-	public static final Consonant[] UVULAR_FRICATIVES = { Consonant.VL_UVULAR_FRICATIVE, Consonant.VD_UVULAR_FRICATIVE };
+	public static final Consonant[] UVULAR_FRICATIVES = { Consonant.VL_UVULAR_FRICATIVE,
+			Consonant.VD_UVULAR_FRICATIVE };
 	
 	// Other consonant categories
+	public static final Consonant[] EJECTIVES = { Consonant.VL_BILABIAL_EJECTIVE_STOP,
+			Consonant.VL_ALVEOLAR_EJECTIVE_STOP, Consonant.VL_PALATAL_EJECTIVE_STOP,
+			Consonant.VL_VELAR_EJECTIVE_STOP, Consonant.VL_UVULAR_EJECTIVE_STOP,
+			Consonant.VL_ALVEOLAR_EJECTIVE_SIB_AFFRICATE, Consonant.VL_ALVEOLAR_EJECTIVE_LAT_AFFRICATE,
+			Consonant.VL_PALATO_ALVEOLAR_EJECTIVE_SIB_AFFRICATE };
+	
 	public static final Consonant[] IMPLOSIVES = { Consonant.VD_BILABIAL_IMPLOSIVE,
 			Consonant.VD_ALVEOLAR_IMPLOSIVE, Consonant.VD_PALATAL_IMPLOSIVE, Consonant.VD_VELAR_IMPLOSIVE };
 	
-	public static final Consonant[] EJECTIVES = { Consonant.VL_BILABIAL_EJECTIVE_STOP, Consonant.VL_ALVEOLAR_STOP,
-			Consonant.VL_PALATAL_EJECTIVE_STOP, Consonant.VL_VELAR_EJECTIVE_STOP,
-			Consonant.VL_UVULAR_EJECTIVE_STOP };
+	/* Vowels */
+	
+	// Vowel groupings
+	public static final int[] NASAL_CONTRAST_WEIGHTS = { 64, 180 };
 	
 	// Syllables
 	public static final int[] SYLLABLE_COMPLEXITY_FREQUENCIES = { 61, 274, 151 };

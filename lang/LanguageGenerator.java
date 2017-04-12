@@ -7,7 +7,8 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.Map.Entry;
 
-import lang.lexicon.Prime;
+import lang.lexicon.Primes;
+import lang.lexicon.Primes.Prime;
 import lang.lexicon.Root;
 import lang.phonology.Consonant;
 import lang.phonology.ConsonantPhoneme;
@@ -25,9 +26,9 @@ public class LanguageGenerator {
 		
 		language = new Language();
 		
-		createHTML("lang");
-		
 		printToConsole();
+		
+		createHTML("lang");
 	}
 	
 	private static void displayConsoleMenu() {
@@ -43,7 +44,7 @@ public class LanguageGenerator {
 		for (ConsonantPhoneme consonant : language.phonology().consonants()) {
 			System.out.print(consonant.symbol() + "\t");
 			for (Consonant c : consonant.allophones())
-				System.out.print("/" + c.symbol() + "/ ");
+				System.out.print(c + ";");
 			System.out.println();
 		}
 		
@@ -52,7 +53,7 @@ public class LanguageGenerator {
 		for (VowelPhoneme vowel : language.phonology().vowels()) {
 			System.out.print(vowel.symbol() + "\t");
 			for (Vowel v : vowel.allophones())
-				System.out.print("/" + v.symbol() + "/ ");
+				System.out.print(v + ";");
 			System.out.println();
 		}
 		
@@ -61,7 +62,7 @@ public class LanguageGenerator {
 		
 		// Semantic roots
 		System.out.println("\nWord roots: ");
-		for (Entry<Prime, Root> entry : language.lexicon().roots().entrySet())
+		for (Entry<Primes.BasicPrime, Root> entry : language.lexicon().roots().entrySet())
 			System.out.println(entry.getKey().name() + ": " + entry.getValue().root());
 		
 		// Additional information
@@ -148,11 +149,18 @@ public class LanguageGenerator {
 			writer.write("\n");
 			writer.write("\t\t<p>\n");
 			writer.write("\t\tWord roots: <br>\n");
-			for (Entry<Prime, Root> entry : language.lexicon().roots().entrySet()) {
+			for (Entry<Primes.BasicPrime, Root> entry : language.lexicon().roots().entrySet()) {
 				writer.write(entry.getKey().name() + ": ");
 				
 				for (char c : entry.getValue().root().toCharArray())
 					writer.write("&#" + (int) c);
+				
+				writer.write(" &nbsp ");
+				
+				writer.write("/");
+				for (char c : entry.getValue().ipa().toCharArray())
+					writer.write("&#" + (int) c);
+				writer.write("/");
 				
 				writer.write(" <br>\n");
 			}

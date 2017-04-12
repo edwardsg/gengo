@@ -11,8 +11,8 @@ public enum Vowel {
 	MID_BACK_RD					(Height.MID, Backness.BACK, Roundedness.ROUNDED, 181, "o"),													// "o	*
 	MID_FRONT_UR				(Height.MID, Backness.FRONT, Roundedness.UNROUNDED, 169, "e"),												// "e	*
 	OPEN_MID_BACK_RD			(Height.OPEN_MID, Backness.BACK, Roundedness.ROUNDED, 162, "\u0254"),										// O
-	CLOSE_MID_BACK_RD			(Height.CLOSE_MID, Backness.BACK, Roundedness.ROUNDED, 131, "o"),											// o
-	CLOSE_MID_FRONT_UR			(Height.CLOSE_MID, Backness.FRONT, Roundedness.UNROUNDED, 124, "e"), 										// e
+//	CLOSE_MID_BACK_RD			(Height.CLOSE_MID, Backness.BACK, Roundedness.ROUNDED, 131, "o"),											// o
+//	CLOSE_MID_FRONT_UR			(Height.CLOSE_MID, Backness.FRONT, Roundedness.UNROUNDED, 124, "e"), 										// e
 	N_OPEN_CENTRAL_UR			(Vowel.NASALIZED, Height.OPEN, Backness.CENTRAL, Roundedness.UNROUNDED, 83, "a\u0303"), 					// a~
 	N_CLOSE_FRONT_UR			(Vowel.NASALIZED, Height.CLOSE, Backness.FRONT, Roundedness.UNROUNDED, 82, "i\u0303"),						// i~
 	MID_CENTRAL_UR				(Height.MID, Backness.CENTRAL, Roundedness.UNROUNDED, 76, "\u0259"), 										// "@
@@ -29,17 +29,17 @@ public enum Vowel {
 	L_OPEN_CENTRAL_UR			(Length.LONG, Height.OPEN, Backness.CENTRAL, Roundedness.UNROUNDED, 34, "a\u02D0"), 						// a:
 	N_MID_FRONT_UR				(Vowel.NASALIZED, Height.MID, Backness.FRONT, Roundedness.UNROUNDED, 33, "e\u0303"), 						// "e~	*
 	N_OPEN_MID_BACK_RD			(Vowel.NASALIZED, Height.OPEN_MID, Backness.BACK, Roundedness.ROUNDED, 32, "\u0254\u0303"), 				// O~
-	N_CLOSE_MID_BACK_RD			(Vowel.NASALIZED, Height.CLOSE_MID, Backness.BACK, Roundedness.ROUNDED, 27, "o\u0303"), 					// o~
-	OPEN_FRONT_UR				(Height.OPEN, Backness.FRONT, Roundedness.UNROUNDED, 26, "a"), 												// a+
+//	N_CLOSE_MID_BACK_RD			(Vowel.NASALIZED, Height.CLOSE_MID, Backness.BACK, Roundedness.ROUNDED, 27, "o\u0303"), 					// o~
+//	OPEN_FRONT_UR				(Height.OPEN, Backness.FRONT, Roundedness.UNROUNDED, 26, "a"), 												// a+
 	OPEN_BACK_UR				(Height.OPEN, Backness.BACK, Roundedness.UNROUNDED, 25, "\u0251"), 											// a_
-	L_CLOSE_MID_BACK_RD			(Length.LONG, Height.CLOSE_MID, Backness.BACK, Roundedness.ROUNDED, 24, "o\u02D0"), 						// o:
+//	L_CLOSE_MID_BACK_RD			(Length.LONG, Height.CLOSE_MID, Backness.BACK, Roundedness.ROUNDED, 24, "o\u02D0"), 						// o:
 	CLOSE_FRONT_RD				(Height.CLOSE, Backness.FRONT, Roundedness.ROUNDED, 24, "y"), 												// y
-	L_CLOSE_MID_FRONT_UR		(Length.LONG, Height.CLOSE_MID, Backness.FRONT, Roundedness.UNROUNDED, 21, "e\u02D0"), 						// e:
+//	L_CLOSE_MID_FRONT_UR		(Length.LONG, Height.CLOSE_MID, Backness.FRONT, Roundedness.UNROUNDED, 21, "e\u02D0"), 						// e:
 	CLOSE_MID_CENTRAL_UR		(Height.CLOSE_MID, Backness.CENTRAL, Roundedness.UNROUNDED, 20, "\u0258"), 									// @
 	OPEN_BACK_RD				(Height.OPEN, Backness.BACK, Roundedness.ROUNDED, 19, "\u0252"), 											// a_)
 //	CLOSE_MID_FRONT_UR			(Height.CLOSE_MID, Backness.FRONT, Roundedness.UNROUNDED, 124, "e"), 										// ai
 //	CLOSE_MID_FRONT_UR			(Height.CLOSE_MID, Backness.FRONT, Roundedness.UNROUNDED, 124, "e"), 										// au
-	N_CLOSE_MID_FRONT_UR		(Vowel.NASALIZED, Height.CLOSE_MID, Backness.FRONT, Roundedness.UNROUNDED, 18, "e\u0303"), 					// e~
+//	N_CLOSE_MID_FRONT_UR		(Vowel.NASALIZED, Height.CLOSE_MID, Backness.FRONT, Roundedness.UNROUNDED, 18, "e\u0303"), 					// e~
 	OPEN_MID_CENTRAL_UR			(Height.CLOSE_MID, Backness.CENTRAL, Roundedness.UNROUNDED, 15, "\u025C"), 									// 3
 	NEAR_OPEN_CETNRAL_UR		(Height.NEAR_OPEN, Backness.CENTRAL, Roundedness.UNROUNDED, 14, "\u0250"), 									// 4
 	L_OPEN_MID_FRONT_UR			(Length.LONG, Height.OPEN_MID, Backness.FRONT, Roundedness.UNROUNDED, 14, "\u025B\u02D0"), 					// E:
@@ -53,7 +53,7 @@ public enum Vowel {
 	OPEN_MID_BACK_UR			(Height.OPEN_MID, Backness.BACK, Roundedness.UNROUNDED, 10, "\u028C"), 										// ^
 	N_NEAR_OPEN_FRONT_UR		(Vowel.NASALIZED, Height.NEAR_OPEN, Backness.FRONT, Roundedness.UNROUNDED, 10, "\u00E6\u0303"), 			// aa~
 	N_NEAR_CLOSE_NEAR_BACK_RD	(Vowel.NASALIZED, Height.NEAR_CLOSE, Backness.NEAR_BACK, Roundedness.ROUNDED, 9, "\u028A\u0303"), 			// U~
-	MID_BACK_UR					(Height.MID, Backness.BACK, Roundedness.UNROUNDED, 8, "\u0264"), 											// "o(	*
+//	MID_BACK_UR					(Height.MID, Backness.BACK, Roundedness.UNROUNDED, 8, "\u0264"), 											// "o(	*
 	OPEN_MID_FRONT_RD			(Height.OPEN_MID, Backness.FRONT, Roundedness.ROUNDED, 8, "\u0153"), 										// E)
 	L_OPEN_MID_BACK_RD			(Length.LONG, Height.OPEN_MID, Backness.BACK, Roundedness.ROUNDED, 8, "\u0254\u02D0"), 						// O:
 	L_OPEN_BACK_UR				(Length.LONG, Height.OPEN, Backness.BACK, Roundedness.UNROUNDED, 8, "\u0251\u02D0"), 						// a_:
@@ -69,9 +69,9 @@ public enum Vowel {
 //	CLOSE_MID_FRONT_UR			(Height.CLOSE_MID, Backness.FRONT, Roundedness.UNROUNDED, 124, "e"), 										// ie
 //	CLOSE_MID_FRONT_UR			(Height.CLOSE_MID, Backness.FRONT, Roundedness.UNROUNDED, 124, "e"), 										// oi
 	CLOSE_CENTRAL_RD			(Height.CLOSE, Backness.CENTRAL, Roundedness.ROUNDED, 6, "\u0289"), 										// u+
-	MID_CENTRAL_RD				(Height.MID, Backness.CENTRAL, Roundedness.ROUNDED, 5, "\u0275"), 											// "@)	*
-	L_OPEN_FRONT_UR				(Length.LONG, Height.OPEN, Backness.FRONT, Roundedness.UNROUNDED, 5, "a\u02D0"), 							// a+:
-	N_OPEN_FRONT_UR				(Vowel.NASALIZED, Height.OPEN, Backness.FRONT, Roundedness.UNROUNDED, 5, "a\u0303"); 						// a+~
+	MID_CENTRAL_RD				(Height.MID, Backness.CENTRAL, Roundedness.ROUNDED, 5, "\u0275"); 											// "@)	*
+//	L_OPEN_FRONT_UR				(Length.LONG, Height.OPEN, Backness.FRONT, Roundedness.UNROUNDED, 5, "a\u02D0"), 							// a+:
+//	N_OPEN_FRONT_UR				(Vowel.NASALIZED, Height.OPEN, Backness.FRONT, Roundedness.UNROUNDED, 5, "a\u0303"); 						// a+~
 //	CLOSE_MID_FRONT_UR			(Height.CLOSE_MID, Backness.FRONT, Roundedness.UNROUNDED, 124, "e"), 										// ah
 //	CLOSE_MID_FRONT_UR			(Height.CLOSE_MID, Backness.FRONT, Roundedness.UNROUNDED, 124, "e"), 										// eh
 //	CLOSE_MID_FRONT_UR			(Height.CLOSE_MID, Backness.FRONT, Roundedness.UNROUNDED, 124, "e"), 										// ia
@@ -81,7 +81,7 @@ public enum Vowel {
 //	CLOSE_MID_FRONT_UR			(Height.CLOSE_MID, Backness.FRONT, Roundedness.UNROUNDED, 124, "e"), 										// u@
 //	CLOSE_MID_FRONT_UR			(Height.CLOSE_MID, Backness.FRONT, Roundedness.UNROUNDED, 124, "e"); 										// uh
 
-	// Named consonant to make declarations clearer
+	// Named constant to make declarations clearer
 	private static final boolean NASALIZED = true;
 	
 	private final Length length;

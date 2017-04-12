@@ -3,7 +3,7 @@ package lang.phonology;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VowelPhoneme {
+public class VowelPhoneme implements Comparable<VowelPhoneme> {
 	private String symbol;
 	
 	private List<Vowel> allophones;
@@ -33,4 +33,10 @@ public class VowelPhoneme {
 	
 	public String symbol() { return symbol; }
 	public List<Vowel> allophones() { return allophones; }
+
+	@Override
+	public int compareTo(VowelPhoneme o) {
+		// TODO Auto-generated method stub
+		return symbol.compareTo(o.symbol);
+	}
 }

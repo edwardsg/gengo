@@ -3,7 +3,7 @@ package lang.phonology;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConsonantPhoneme {
+public class ConsonantPhoneme implements Comparable<ConsonantPhoneme> {
 	private String symbol;
 	
 	private List<Consonant> allophones;
@@ -18,6 +18,11 @@ public class ConsonantPhoneme {
 	
 	public Consonant getAllophone() {
 		return allophones.get(0);
+	}
+
+	@Override
+	public int compareTo(ConsonantPhoneme other) {
+		return symbol.compareTo(other.symbol);
 	}
 	
 	public boolean equals(Object other) {

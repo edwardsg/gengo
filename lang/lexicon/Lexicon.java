@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import lang.lexicon.Primes.Prime;
 import lang.phonology.Cluster;
 import lang.phonology.ConsonantPhoneme;
 import lang.phonology.Phonology;
@@ -18,19 +19,19 @@ public class Lexicon {
 	private Phonology phonology;
 	private List<String[]> restrictedPairs;
 	
-	private Map<Prime, Root> roots;
+	private Map<Primes.BasicPrime, Root> roots;
 	
 	public Lexicon(Random random, Phonology phonology) {
 		this.random = random;
 		this.phonology = phonology;
 		
-		roots = new EnumMap<Prime, Root>(Prime.class);
+		roots = new EnumMap<Primes.BasicPrime, Root>(Primes.BasicPrime.class);
 		assignRoots();
 	}
 	
 	// Assign generated roots to primes
 	private void assignRoots() {
-		for (Prime prime : Prime.values()) {
+		for (Primes.BasicPrime prime : Primes.BasicPrime.values()) {
 			roots.put(prime, createRoot());
 		}
 	}
@@ -72,11 +73,12 @@ public class Lexicon {
 			}
 			
 			// Syllable separation
-			root.endSyllable();
+			if (syllable < numSyllables - 1)
+				root.endSyllable();
 		}
 		
 		return root;
 	}
 	
-	public Map<Prime, Root> roots() { return roots; }
+	public Map<Primes.BasicPrime, Root> roots() { return roots; }
 }
