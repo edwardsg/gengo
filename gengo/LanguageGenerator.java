@@ -1,4 +1,4 @@
-package lang;
+package gengo;
 
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
@@ -7,13 +7,13 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.Map.Entry;
 
-import lang.lexicon.Primes;
-import lang.lexicon.Primes.Prime;
-import lang.lexicon.Root;
-import lang.phonology.Consonant;
-import lang.phonology.ConsonantPhoneme;
-import lang.phonology.Vowel;
-import lang.phonology.VowelPhoneme;
+import gengo.grammar.GrammarStructure;
+import gengo.lexicon.Primes;
+import gengo.lexicon.Root;
+import gengo.phonology.Consonant;
+import gengo.phonology.ConsonantPhoneme;
+import gengo.phonology.Vowel;
+import gengo.phonology.VowelPhoneme;
 
 /* Main class */
 public class LanguageGenerator {
@@ -59,6 +59,11 @@ public class LanguageGenerator {
 		
 		// Print syllable structure
 		System.out.println("\nSyllable structure: " + language.phonology().syllableStructure());
+		
+		// Grammar
+		System.out.println("\nGrammar:");
+		for (GrammarStructure structure : language.grammar().grammaticalStructures())
+			System.out.println(structure);
 		
 		// Semantic roots
 		System.out.println("\nWord roots: ");
@@ -143,6 +148,15 @@ public class LanguageGenerator {
 			writer.write("\t\tSyllable structure: <br>\n");
 			writer.write(String.format("<font size=\"%d\"> ", HTML_FONT_SIZE));
 			writer.write("" + language.phonology().syllableStructure() + " </font>\n");
+			
+			/* Grammar */
+			
+			writer.write("\n");
+			writer.write("\t\t<p>\n");
+			writer.write("\t\tGrammar: <br>\n");
+			for (GrammarStructure structure : language.grammar().grammaticalStructures()) {
+				writer.write("\t\t" + structure.toString() + " <br>\n");
+			}
 			
 			/* Lexicon */
 			

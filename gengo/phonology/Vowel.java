@@ -1,6 +1,4 @@
-package lang.phonology;
-
-import lang.Data;
+package gengo.phonology;
 
 /* Contains all possible vowel phonemes with their features, occurrence in UPSID, and IPA symbols */
 public enum Vowel {

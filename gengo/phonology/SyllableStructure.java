@@ -1,9 +1,9 @@
-package lang.phonology;
+package gengo.phonology;
 
 import java.util.List;
 import java.util.Random;
 
-import lang.Data;
+import gengo.RandomGen;
 
 /* Contains rules and structure for creating syllables */
 public class SyllableStructure {
@@ -29,7 +29,7 @@ public class SyllableStructure {
 	// Create more or less complex syllable structure based on WALS data
 	private void createSyllableStructure() {
 		// Choose complexity of 0, 1, or 2 based real world occurrence
-		int syllableComplexity = Data.chooseIndexByWeights(random, complexityWeights);
+		int syllableComplexity = RandomGen.chooseIndexByWeights(random, complexityWeights);
 		
 		// Syllable nucleus is essentially the same for every language
 		nucleus = new Nucleus(random);

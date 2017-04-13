@@ -1,4 +1,4 @@
-package lang.phonology;
+package gengo.phonology;
 
 import java.util.ArrayList;
 import java.util.List;

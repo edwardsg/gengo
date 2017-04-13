@@ -1,4 +1,4 @@
-package lang.phonology;
+package gengo.phonology;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,6 @@ public class ConsonantPhoneme implements Comparable<ConsonantPhoneme> {
 		return allophones.get(0);
 	}
 
-	@Override
 	public int compareTo(ConsonantPhoneme other) {
 		return symbol.compareTo(other.symbol);
 	}
@@ -36,6 +35,11 @@ public class ConsonantPhoneme implements Comparable<ConsonantPhoneme> {
 		else return false;
 	}
 	
+	public String toString() {
+		return allophones.get(0).toString();
+	}
+	
 	public String symbol() { return symbol; }
 	public List<Consonant> allophones() { return allophones; }
+	public Consonant.Voice voice() { return allophones.get(0).voice(); }
 }

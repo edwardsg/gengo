@@ -1,4 +1,4 @@
-package lang.lexicon;
+package gengo.lexicon;
 
 public class Primes {
 	public interface Prime {}

@@ -1,7 +1,7 @@
-package lang.lexicon;
+package gengo.lexicon;
 
-import lang.phonology.ConsonantPhoneme;
-import lang.phonology.VowelPhoneme;
+import gengo.phonology.ConsonantPhoneme;
+import gengo.phonology.VowelPhoneme;
 
 // Contains a meaningless root with its IPA representation
 public class Root {

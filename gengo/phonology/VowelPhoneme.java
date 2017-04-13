@@ -1,4 +1,4 @@
-package lang.phonology;
+package gengo.phonology;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +19,10 @@ public class VowelPhoneme implements Comparable<VowelPhoneme> {
 	public Vowel getAllophone() {
 		return allophones.get(0);
 	}
+
+	public int compareTo(VowelPhoneme other) {
+		return symbol.compareTo(other.symbol);
+	}
 	
 	public boolean equals(Object other) {
 		if (other == null) return false;
@@ -31,12 +35,10 @@ public class VowelPhoneme implements Comparable<VowelPhoneme> {
 		else return false;
 	}
 	
+	public String toString() {
+		return allophones.get(0).toString();
+	}
+	
 	public String symbol() { return symbol; }
 	public List<Vowel> allophones() { return allophones; }
-
-	@Override
-	public int compareTo(VowelPhoneme o) {
-		// TODO Auto-generated method stub
-		return symbol.compareTo(o.symbol);
-	}
 }
