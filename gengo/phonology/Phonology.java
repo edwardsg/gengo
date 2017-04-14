@@ -76,10 +76,7 @@ public class Phonology {
 		consonants = new ArrayList<ConsonantPhoneme>();
 		vowels = new ArrayList<VowelPhoneme>();
 		
-		createNewPhonology();
-	}
-	
-	private void createNewPhonology() {
+		// Generate phonology
 		choosePhonemeTypes();
 		
 		chooseConsonantInventory();

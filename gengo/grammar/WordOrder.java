@@ -4,10 +4,11 @@ import java.util.Random;
 
 import gengo.RandomGen;
 
-public class WordOrder extends GrammarStructure {
+public class WordOrder extends GrammaticalStructure {	
 	private Order order;
 	
 	public WordOrder(Random random) {
+		super(random);
 		order = Order.values()[RandomGen.chooseIndexByWeights(random, Data.WORD_ORDER_WEIGHTS)];
 	}
 	

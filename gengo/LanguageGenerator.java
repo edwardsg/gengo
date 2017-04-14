@@ -7,7 +7,7 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.Map.Entry;
 
-import gengo.grammar.GrammarStructure;
+import gengo.grammar.GrammaticalStructure;
 import gengo.lexicon.Primes;
 import gengo.lexicon.Root;
 import gengo.phonology.Consonant;
@@ -62,8 +62,8 @@ public class LanguageGenerator {
 		
 		// Grammar
 		System.out.println("\nGrammar:");
-		for (GrammarStructure structure : language.grammar().grammaticalStructures())
-			System.out.println(structure);
+		for (GrammaticalStructure structure : language.grammar().grammaticalStructures())
+			System.out.println(structure + "\n");
 		
 		// Semantic roots
 		System.out.println("\nWord roots: ");
@@ -154,8 +154,8 @@ public class LanguageGenerator {
 			writer.write("\n");
 			writer.write("\t\t<p>\n");
 			writer.write("\t\tGrammar: <br>\n");
-			for (GrammarStructure structure : language.grammar().grammaticalStructures()) {
-				writer.write("\t\t" + structure.toString() + " <br>\n");
+			for (GrammaticalStructure structure : language.grammar().grammaticalStructures()) {
+				writer.write("\t\t" + structure.toString() + " <br><br>\n\n");
 			}
 			
 			/* Lexicon */

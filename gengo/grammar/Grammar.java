@@ -9,22 +9,25 @@ import java.util.Random;
 public class Grammar {
 	private Random random;
 	
-	private List<GrammarStructure> grammaticalStructures;
+	private List<GrammaticalStructure> grammaticalStructures;
 	private WordOrder wordOrder;
+	private CaseSystem caseSystem;
 	
 	public Grammar (Random random) {
 		this.random = random;
-		grammaticalStructures = new ArrayList<GrammarStructure>();
+		grammaticalStructures = new ArrayList<GrammaticalStructure>();
 		
 		createGrammar();
 	}
 	
 	private void createGrammar() {
 		wordOrder = new WordOrder(random);
-		
 		grammaticalStructures.add(wordOrder);
+		
+		caseSystem = new CaseSystem(random);
+		grammaticalStructures.add(caseSystem);
 	}
 	
-	public List<GrammarStructure> grammaticalStructures() { return grammaticalStructures; }
+	public List<GrammaticalStructure> grammaticalStructures() { return grammaticalStructures; }
 	public WordOrder wordOrder() { return wordOrder; }
 }
