@@ -11,12 +11,12 @@ import gengo.grammar.GrammaticalStructure;
 import gengo.lexicon.Primes;
 import gengo.lexicon.Root;
 import gengo.phonology.Consonant;
-import gengo.phonology.ConsonantPhoneme;
 import gengo.phonology.Vowel;
-import gengo.phonology.VowelPhoneme;
 
 /* Main class */
 public class LanguageGenerator {
+	public static boolean IPA_SYLLABLE_SEPARATION = true;
+	
 	private static int HTML_FONT_SIZE = 5;
 	
 	private static Language language;
@@ -41,20 +41,14 @@ public class LanguageGenerator {
 		
 		// Print consonants in language
 		System.out.println("Consonants (" + language.phonology().consonantInventory() + "):");
-		for (ConsonantPhoneme consonant : language.phonology().consonants()) {
-			System.out.print(consonant.symbol() + "\t");
-			for (Consonant c : consonant.allophones())
-				System.out.print(c + ";");
-			System.out.println();
+		for (Consonant consonant : language.phonology().consonants()) {
+			System.out.println(consonant);
 		}
 		
 		// Print vowels in language
 		System.out.println("\nVowels (" + language.phonology().vowelInventory() + "):");
-		for (VowelPhoneme vowel : language.phonology().vowels()) {
-			System.out.print(vowel.symbol() + "\t");
-			for (Vowel v : vowel.allophones())
-				System.out.print(v + ";");
-			System.out.println();
+		for (Vowel vowel : language.phonology().vowels()) {
+			System.out.println(vowel);
 		}
 		
 		// Print syllable structure
@@ -92,25 +86,17 @@ public class LanguageGenerator {
 			// Consonants
 			writer.write("\t\t<p>\n");
 			writer.write("\t\tConsonants (" + language.phonology().consonantInventory() + "): <br>\n");
-			for (ConsonantPhoneme phoneme : language.phonology().consonants()) {
+			for (Consonant consonant : language.phonology().consonants()) {
 				writer.write("\t\t");
 				
 				writer.write(String.format("<font size=\"%d\"> ", HTML_FONT_SIZE));
 				
-				for (char c : phoneme.symbol().toCharArray())
+				for (char c : consonant.symbol().toCharArray())
 					writer.write("&#" + (int) c);
 				
 				writer.write(" </font> ");
 				
-				// Allophones
-				for (Consonant consonant : phoneme.allophones()) {
-					writer.write("/");
-					for (char c : consonant.symbol().toCharArray())
-						writer.write("&#" + (int) c);
-					writer.write("/ ");
-					
-					writer.write(consonant.toString());
-				}
+				writer.write(consonant.toString());
 				
 				writer.write("<br>\n");
 			}
@@ -119,25 +105,17 @@ public class LanguageGenerator {
 			writer.write("\n");
 			writer.write("\t\t<p>\n");
 			writer.write("\t\tVowels (" + language.phonology().vowelInventory() + "): <br>\n");
-			for (VowelPhoneme phoneme : language.phonology().vowels()) {
+			for (Vowel vowel : language.phonology().vowels()) {
 				writer.write("\t\t");
 				
 				writer.write(String.format("<font size=\"%d\"> ", HTML_FONT_SIZE));
 				
-				for (char c : phoneme.symbol().toCharArray())
+				for (char c : vowel.symbol().toCharArray())
 					writer.write("&#" + (int) c);
 				
 				writer.write(" </font> ");
 				
-				// Allophones
-				for (Vowel vowel : phoneme.allophones()) {
-					writer.write("/");
-					for (char c : vowel.symbol().toCharArray())
-						writer.write("&#" + (int) c);
-					writer.write("/ ");
-					
-					writer.write(vowel.toString());
-				}
+				writer.write(vowel.toString());
 				
 				writer.write("<br>\n");
 			}

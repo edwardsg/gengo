@@ -4,7 +4,7 @@ public class Primes {
 	public interface Prime {}
 	
 	public enum BasicPrime implements Prime {
-		I, YOU, PERSON, PEOPLE,
+		I, YOU, PERSON,
 		THING, BODY, KIND, PART,
 		THIS, SAME, OTHER,
 		ONE, TWO, SOME, ALL, MUCH,

@@ -34,14 +34,14 @@ public class Cluster {
 			
 			// Liquids
 			if (random.nextBoolean()) {
-				possibleSecondValues.add(Consonant.VD_ALVEOLAR_LAT_APPROXIMANT);
-				possibleSecondValues.add(Consonant.VD_ALVEOLAR_APPROXIMANT);
+				possibleSecondValues.add(IPA.VD_ALVEOLAR_LAT_APPROXIMANT);
+				possibleSecondValues.add(IPA.VD_ALVEOLAR_APPROXIMANT);
 			}
 			
 			// Glides
 			if (random.nextBoolean()) {
-				possibleSecondValues.add(Consonant.VD_LABIO_VELAR_APPROXIMANT);
-				possibleSecondValues.add(Consonant.VD_PALATAL_APPROXIMANT);
+				possibleSecondValues.add(IPA.VD_LABIO_VELAR_APPROXIMANT);
+				possibleSecondValues.add(IPA.VD_PALATAL_APPROXIMANT);
 			}
 		} else {
 			geminationAllowed = false;
@@ -53,7 +53,7 @@ public class Cluster {
 		String cluster = "";
 		
 		for (int i = 0; i < slots; ++i) {
-			cluster += "C";
+			cluster += "(C)";
 		}
 		
 		return cluster;

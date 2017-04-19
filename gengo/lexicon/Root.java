@@ -1,7 +1,7 @@
 package gengo.lexicon;
 
-import gengo.phonology.ConsonantPhoneme;
-import gengo.phonology.VowelPhoneme;
+import gengo.phonology.Phoneme;
+import gengo.phonology.Syllable;
 
 // Contains a meaningless root with its IPA representation
 public class Root {
@@ -18,17 +18,17 @@ public class Root {
 		this.ipa = ipa;
 	}
 	
-	public void addConsonant(ConsonantPhoneme phoneme) {
-		root += phoneme.symbol();
-		ipa += phoneme.getAllophone().symbol();
+	public void addSyllable(Syllable syllable) {
+		for (Phoneme phoneme : syllable.phonemes())
+			addPhoneme(phoneme);
 	}
 	
-	public void addVowel(VowelPhoneme phoneme) {
+	private void addPhoneme(Phoneme phoneme) {
 		root += phoneme.symbol();
-		ipa += phoneme.getAllophone().symbol();
+		ipa += phoneme.symbol();
 	}
 	
-	public void endSyllable() {
+	public void separateSyllable() {
 		ipa += ".";
 	}
 	

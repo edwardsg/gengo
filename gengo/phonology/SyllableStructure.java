@@ -15,13 +15,19 @@ public class SyllableStructure {
 	private Nucleus nucleus;
 	private Cluster coda;
 	
-	private List<ConsonantPhoneme> consonants;
-	private List<VowelPhoneme> vowels;
+	private boolean geminationAllowed;
 	
-	public SyllableStructure(List<ConsonantPhoneme> consonants, List<VowelPhoneme> vowels, Random random) {
+	private List<Consonant> consonants;
+	private List<Vowel> vowels;
+	
+	private Phoneme previousPhoneme = null;
+	
+	public SyllableStructure(List<Consonant> consonants, List<Vowel> vowels, Random random) {
 		this.random = random;
 		this.consonants = consonants;
 		this.vowels = vowels;
+		
+		geminationAllowed = random.nextBoolean();
 		
 		createSyllableStructure();
 	}
@@ -48,6 +54,77 @@ public class SyllableStructure {
 			coda = new Cluster(random.nextInt(2) + 2, random);
 			break;
 		}
+	}
+	
+	// Creates a single new syllable based on the generated structure
+	public Syllable nextSyllable() {
+		Syllable syllable = new Syllable();
+		
+		// Syllable onset		
+		double slotProbability = 1.0 / onset.slots();
+		for (int i = 0; i < onset.slots(); ++i) {
+			if (random.nextDouble() <= slotProbability) {
+				// Make sure any adjacent consonants have same voice
+				Consonant consonant;
+				do {
+					consonant = consonants.get(random.nextInt(consonants.size()));
+				} while (changePhoneme(consonant) == null);
+				
+				previousPhoneme = consonant;
+				syllable.addPhoneme(consonant);
+			}
+			
+			slotProbability *= 1.5;
+		}
+		
+		// Nucleus
+		Vowel vowel = vowels.get(random.nextInt(vowels.size()));
+		syllable.addPhoneme(vowel);
+		previousPhoneme = vowel;
+		
+		// Coda	
+		slotProbability = 1.0 / coda.slots();
+		for (int i = 0; i < coda.slots(); ++i) {
+			if (random.nextDouble() <= slotProbability) {
+				// Make sure any adjacent consonants have same voice
+				Consonant consonant;
+				do {
+					consonant = consonants.get(random.nextInt(consonants.size()));
+				} while (changePhoneme(consonant) == null);
+				
+				previousPhoneme = consonant;
+				syllable.addPhoneme(consonant);
+			}
+			
+			slotProbability *= 1.5;
+		}
+		
+		return syllable;
+	}
+	
+	// Accept, reject, or change a phoneme based on the one that comes before it
+	private Phoneme changePhoneme(Phoneme phoneme) {
+		if (previousPhoneme == null) return phoneme;
+		
+		if (previousPhoneme.getClass() == Consonant.class) {
+			Consonant previous = (Consonant) previousPhoneme;
+			
+			if (phoneme.getClass() == Consonant.class) {
+				Consonant current = (Consonant) phoneme;
+				
+				if (current.voice() != previous.voice())
+					return null;
+				
+				if (!geminationAllowed && current == previous)
+					return null;
+			}
+		}
+		
+		return phoneme;
+	}
+	
+	public void reset() {
+		previousPhoneme = null;
 	}
 	
 	// Turns structure into string like (C)(C)V(C)

@@ -3,33 +3,33 @@ package gengo.phonology;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VowelPhoneme implements Comparable<VowelPhoneme> {
+public class OldPhoneme implements Comparable<OldPhoneme> {
 	private String symbol;
 	
-	private List<Vowel> allophones;
+	private List<Phoneme> allophones;
 	
-	public VowelPhoneme(Vowel... allophones) {
+	public OldPhoneme(Phoneme... allophones) {
 		symbol = allophones[0].symbol();
 		
-		this.allophones = new ArrayList<Vowel>();
-		for (Vowel allophone : allophones)
+		this.allophones = new ArrayList<Phoneme>();
+		for (Phoneme allophone : allophones)
 			this.allophones.add(allophone);
 	}
 	
-	public Vowel getAllophone() {
+	public Phoneme getAllophone() {
 		return allophones.get(0);
 	}
 
-	public int compareTo(VowelPhoneme other) {
+	public int compareTo(OldPhoneme other) {
 		return symbol.compareTo(other.symbol);
 	}
 	
 	public boolean equals(Object other) {
 		if (other == null) return false;
 		if (other == this) return true;
-		if (!(other instanceof VowelPhoneme)) return false;
+		if (!(other instanceof OldPhoneme)) return false;
 		
-		VowelPhoneme otherPhoneme = (VowelPhoneme) other;
+		OldPhoneme otherPhoneme = (OldPhoneme) other;
 		
 		if (otherPhoneme.allophones().equals(this.allophones)) return true;
 		else return false;
@@ -40,5 +40,5 @@ public class VowelPhoneme implements Comparable<VowelPhoneme> {
 	}
 	
 	public String symbol() { return symbol; }
-	public List<Vowel> allophones() { return allophones; }
+	public List<Phoneme> allophones() { return allophones; }
 }
