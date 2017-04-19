@@ -48,7 +48,8 @@ public class CaseSystem extends GrammaticalStructure {
 	
 	public static enum Case {
 		NOM("Nominative"), ACC("Accusative"), GEN("Genitive"), DAT("Dative"), LOC("Locative"), 
-		ABL("Ablative"), INS("Instrumental"), VOC("Vocative");
+		ABL("Ablative"), INS("Instrumental"), VOC("Vocative"), COM("Comitative"), ALL("Allative"),
+		COMP("Comparative");
 		
 		private final String name;
 		
