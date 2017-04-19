@@ -6,14 +6,16 @@ import java.util.Random;
 
 import gengo.RandomGen;
 
-public class CaseSystem extends GrammaticalStructure {
+public class CaseSystem extends NominalCategory {
 	private int numberOfCases;
 	
 	private List<Case> cases;
 	
 	public CaseSystem(Random random) {
 		super(random);
-		
+	}
+	
+	protected void createSystem() {
 		int numberOfCasesType = RandomGen.chooseIndexByWeights(random, Data.CASE_WEIGHTS);
 		if (numberOfCasesType == 0)
 			numberOfCases = 0;

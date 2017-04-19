@@ -12,6 +12,7 @@ public class Grammar {
 	private List<GrammaticalStructure> grammaticalStructures;
 	private WordOrder wordOrder;
 	private CaseSystem caseSystem;
+	private GenderSystem genderSystem;
 	
 	public Grammar (Random random) {
 		this.random = random;
@@ -26,6 +27,9 @@ public class Grammar {
 		
 		caseSystem = new CaseSystem(random);
 		grammaticalStructures.add(caseSystem);
+		
+		genderSystem = new GenderSystem(random);
+		grammaticalStructures.add(genderSystem);
 	}
 	
 	public List<GrammaticalStructure> grammaticalStructures() { return grammaticalStructures; }
