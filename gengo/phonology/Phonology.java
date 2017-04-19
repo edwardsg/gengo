@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Random;
 
 import gengo.RandomGen;
+import gengo.phonology.Consonant.Manner;
+import gengo.phonology.Consonant.Voice;
 
 /* Contains phonological information for a language, including phonemes and syllable structure */
 public class Phonology {
@@ -181,32 +183,32 @@ public class Phonology {
 		while (consonants.size() < consonantInventory) {			
 			// Uvulars
 			if (uvularStopsPresent)
-				addConsonant(chooseConsonantFromSet(random, IPA.UVULAR_STOPS), availableConsonants);
+				addConsonant(chooseConsonantFromSet(IPA.UVULAR_STOPS), availableConsonants);
 			if (uvularContinuantsPresent)
-				addConsonant(chooseConsonantFromSet(random, IPA.UVULAR_FRICATIVES), availableConsonants);
+				addConsonant(chooseConsonantFromSet(IPA.UVULAR_FRICATIVES), availableConsonants);
 			
 			// Glottalized consonants
 			if (ejectivesPresent)
-				addConsonant(chooseConsonantFromSet(random, IPA.EJECTIVES), availableConsonants);
+				addConsonant(chooseConsonantFromSet(IPA.EJECTIVES), availableConsonants);
 			if (implosivesPresent)
-				addConsonant(chooseConsonantFromSet(random, IPA.IMPLOSIVES), availableConsonants);
+				addConsonant(chooseConsonantFromSet(IPA.IMPLOSIVES), availableConsonants);
 			
 			// Lateral consonants
 			if (lateralObstruentsPresent)
-				addConsonant(chooseConsonantFromSet(random, IPA.LATERAL_OBSTRUENTS), availableConsonants);
+				addConsonant(chooseConsonantFromSet(IPA.LATERAL_OBSTRUENTS), availableConsonants);
 			if (lateralOthersPresent)
-				addConsonant(chooseConsonantFromSet(random, IPA.LATERAL_OTHERS), availableConsonants);
+				addConsonant(chooseConsonantFromSet(IPA.LATERAL_OTHERS), availableConsonants);
 			
 			// Uncommon consonants
 			if (clicksPresent)
-				addConsonant(chooseConsonantFromSet(random, IPA.CLICKS), availableConsonants);
+				addConsonant(chooseConsonantFromSet(IPA.CLICKS), availableConsonants);
 			if (labialVelarsPresent)
-				addConsonant(chooseConsonantFromSet(random, IPA.LABIAL_VELARS), availableConsonants);
+				addConsonant(chooseConsonantFromSet(IPA.LABIAL_VELARS), availableConsonants);
 			
 			// Other consonants
 			Consonant[] availableArray = new Consonant[availableConsonants.size()];
 			availableArray = availableConsonants.toArray(availableArray);
-			addConsonant(chooseConsonantFromSet(random, availableArray), availableConsonants);
+			addConsonant(chooseConsonantFromSet(availableArray), availableConsonants);
 			
 			// If we run out of usable consonants
 			if (availableConsonants.size() == 0)
@@ -248,13 +250,18 @@ public class Phonology {
 	// Make a list of all consonants minus ones that are not included
 	private List<Consonant> createAvailableConsonants() {
 		ArrayList<Consonant> availableConsonants = new ArrayList<Consonant>();
+			
 		
 		// Add all consonants, not including voiced if no voicing contrast
 		for (Consonant consonant : IPA.CONSONANTS)
-			if (plosiveVoicingContrast || !consonant.hasFeature(Consonant.Manner.STOP))
+			if (plosiveVoicingContrast || !consonant.hasFeatures(Manner.STOP, Voice.VOICED))
 				availableConsonants.add(consonant);
-			else if (fricativeVoicingContrast || !(consonant.hasFeature(Consonant.Manner.SIB_FRICATIVE) || consonant.hasFeature(Consonant.Manner.NONSIB_FRICATIVE)))
+			else if (fricativeVoicingContrast || !(consonant.hasFeature(Voice.VOICED) && (consonant.hasFeature(Manner.SIB_FRICATIVE) || consonant.hasFeature(Manner.NONSIB_FRICATIVE))))
 				availableConsonants.add(consonant);
+		
+		// Basic plosives
+		removeConsonantsIfAbsent(availableConsonants, pPresent, IPA.VL_BILABIAL_STOP);
+		removeConsonantsIfAbsent(availableConsonants, gPresent, IPA.VD_VELAR_STOP);
 		
 		// Uvulars
 		removeConsonantsIfAbsent(availableConsonants, uvularStopsPresent, IPA.UVULAR_STOPS);
@@ -290,20 +297,22 @@ public class Phonology {
 	}
 	
 	// Add one consonant to inventory
-	private void addConsonant(Consonant consonant, List<Consonant> allConsonants) {		
+	private void addConsonant(Consonant consonant, List<Consonant> availableConsonants) {
+		if (!availableConsonants.contains(consonant)) return;
+		
 		if (!consonants.contains(consonant))
 			consonants.add(consonant);
 		
-		allConsonants.remove(consonant);
+		availableConsonants.remove(consonant);
 	}
 	
 	// Pick one consonant from a predefined list
-	private static Consonant chooseConsonantFromSet(Random random, Consonant[] set) {
+	private Consonant chooseConsonantFromSet(Consonant[] set) {
 		int[] weights = new int[set.length];
 		for (int i = 0; i < set.length; ++i)
 			weights[i] = set[i].weight();
 		
-		Consonant consonant =  set[RandomGen.chooseIndexByWeights(random, weights)];
+		Consonant consonant = set[RandomGen.chooseIndexByWeights(random, weights)];
 		
 		return consonant;
 	}

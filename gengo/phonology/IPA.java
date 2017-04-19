@@ -37,13 +37,13 @@ public class IPA {
 	public static final Consonant VL_LABIODENTAL_FRICATIVE					= new Consonant(180, "f", Voice.VOICELESS, Place.LABIODENTAL, Manner.NONSIB_FRICATIVE);		// f
 	public static final Consonant VD_ALVEOLAR_LAT_APPROXIMANT				= new Consonant(174, "l", Voice.VOICED, Place.ALVEOLAR, Manner.LAT_APPROXIMANT);				// l
 //	public static final Consonant VD_DENTAL_ALVEOLAR_NASAL					= new Consonant(Voice.VOICED, Place.DENTAL, Manner.NASAL, 160, "n");							// "n	*
-	public static final Consonant VL_DENTAL_ALVEOLAR_STOP					= new Consonant(152, "t", Voice.VOICELESS, Place.DENTAL, Manner.STOP);							// "t	*
+//	public static final Consonant VL_DENTAL_ALVEOLAR_STOP					= new Consonant(152, "t", Voice.VOICELESS, Place.DENTAL, Manner.STOP);							// "t	*
 	public static final Consonant VD_PALATAL_NASAL							= new Consonant(141, "\u0272", Voice.VOICED, Place.PALATAL, Manner.NASAL);						// nj
 //	public static final Consonant VD_DENTAL_ALVEOLAR_LAT_APPROXIMANT		= new Consonant(Voice.VOICED, Place.DENTAL, Manner.LAT_APPROXIMANT, 136, "l");					// "l	*
 //	public static final Consonant VL_DENTAL_ALVEOLARD_SIB_FRICATIVE			= new Consonant(Voice.VOICELESS, Place.DENTAL, Manner.SIB_FRICATIVE, 135, "s");				// "s	*
 	public static final Consonant VD_ALVEOLAR_STOP							= new Consonant(120, "d", Voice.VOICED, Place.ALVEOLAR, Manner.STOP);							// d
 	public static final Consonant VD_PALATO_ALVEOLAR_SIB_AFFRICATE			= new Consonant(113, "d\u0361\u0292", Voice.VOICED, Place.PALATO_ALVEOLAR, Manner.SIB_AFFRICATE);	// dZ
-	public static final Consonant VL_DENTAL_STOP							= new Consonant(106, "t", Voice.VOICELESS, Place.DENTAL, Manner.STOP);							// tD	*
+//	public static final Consonant VL_DENTAL_STOP							= new Consonant(106, "t", Voice.VOICELESS, Place.DENTAL, Manner.STOP);							// tD	*
 //	public static final Consonant VLA_VELAR_STOP							= new Consonant(103, "k\u02B0", Voice.VOICELESS, Aspiration.ASPIRATED, Place.VELAR, Manner.STOP);	// kh
 //	public static final Consonant VLA_BILABIAL_STOP							= new Consonant(101, "p\u02B0", Voice.VOICELESS, Aspiration.ASPIRATED, Place.BILABIAL, Manner.STOP);// ph
 	public static final Consonant VD_ALVEOLAR_TRILL							= new Consonant(95, "r", Voice.VOICED, Place.ALVEOLAR, Manner.TRILL);							// r
@@ -66,9 +66,9 @@ public class IPA {
 //	public static final Consonant VLA_PALATO_ALVEOLAR_SIB_AFFRICATE			= new Consonant(51, "t\u0361\u0283\u02B0", Voice.VOICELESS, Aspiration.ASPIRATED, Place.PALATO_ALVEOLAR, Manner.SIB_AFFRICATE);							// tSh
 //	public static final Consonant VLA_DENTAL_ALVEOLAR_STOP					= new Consonant(Voice.VOICED, Aspiration.ASPIRATED, Place.ALVEOLAR, Manner.STOP, 49, "t\u02B0");							// "th
 	public static final Consonant VD_BILABIAL_IMPLOSIVE						= new Consonant(49, "\u0253", Voice.VOICED, Place.BILABIAL, Manner.IMPLOSIVE);							// b<
-	public static final Consonant PRENASALIZED_VD_BILABIAL_STOP				= new Consonant(48, "m\u0361b", Voice.VOICED, Place.BILABIAL, Manner.STOP);							// mb
+//	public static final Consonant PRENASALIZED_VD_BILABIAL_STOP				= new Consonant(48, "m\u0361b", Voice.VOICED, Place.BILABIAL, Manner.STOP);							// mb
 //	public static final Consonant VL_DENTAL_ALVEOLAR_SIB_AFFRICATE			= new Consonant(Voice.VOICELESS, Place.DENTAL, Manner.SIB_AFFRICATE, 45, "t\u0361s");							// "ts
-	public static final Consonant PRENASALIZED_VD_VELAR_STOP				= new Consonant(45, "\u014B\u0361g", Voice.VOICED, Place.VELAR, Manner.STOP);							// Ng
+//	public static final Consonant PRENASALIZED_VD_VELAR_STOP				= new Consonant(45, "\u014B\u0361g", Voice.VOICED, Place.VELAR, Manner.STOP);							// Ng
 //	public static final Consonant VD_PALATO_ALVEOLAR_NASAL					= new Consonant(Voice.VOICED, Place.PALATO_ALVEOLAR, Manner.NASAL, 45, "n");							// n_
 	public static final Consonant VL_UVULAR_FRICATIVE						= new Consonant(44, "\u03C7", Voice.VOICELESS, Place.UVULAR, Manner.NONSIB_FRICATIVE);							// X
 	public static final Consonant VL_BILABIAL_EJECTIVE_STOP					= new Consonant(44, "p\u02BC", Voice.VOICELESS, Place.BILABIAL, Ejectivity.EJECTIVE, Manner.STOP);							// p'
@@ -87,7 +87,7 @@ public class IPA {
 	public static final Consonant VD_RETROFLEX_STOP							= new Consonant(27, "\u0256", Voice.VOICED, Place.RETROFLEX, Manner.STOP);							// d.
 	public static final Consonant VD_RETROFLEX_LAT_APPROXIMANT				= new Consonant(27, "\u026D", Voice.VOICED, Place.RETROFLEX, Manner.LAT_APPROXIMANT);							// l.
 //	public static final Consonant VD_DENTAL_ALVEOLAR_FLAP					= new Consonant(Voice.VOICED, Place.DENTAL, Manner.FLAP, 26, "\u027E");							// "r[	*
-	public static final Consonant PRENASALIZED_VD_ALVEOLAR_STOP				= new Consonant(26, "n\u0361d", Voice.VOICED, Place.ALVEOLAR, Manner.STOP);							// nd
+//	public static final Consonant PRENASALIZED_VD_ALVEOLAR_STOP				= new Consonant(26, "n\u0361d", Voice.VOICED, Place.ALVEOLAR, Manner.STOP);							// nd
 	public static final Consonant VL_UVULAR_EJECTIVE_STOP					= new Consonant(26, "q\u02BC", Voice.VOICELESS, Place.UVULAR, Ejectivity.EJECTIVE, Manner.STOP);							// q'
 	public static final Consonant VL_ALVEOLAR_EJECTIVE_SIB_AFFRICATE		= new Consonant(26, "t\u0361s\u02BC", Voice.VOICELESS, Place.ALVEOLAR, Ejectivity.EJECTIVE, Manner.SIB_AFFRICATE);	// ts'	*
 //	public static final Consonant VLA_DENTAL_ALVEOLAR_SIB_AFFRICATE			= new Consonant(Voice.VOICELESS, Aspiration.ASPIRATED, Place.DENTAL, Manner.SIB_AFFRICATE, 25, "t\u0361s\u02B0");							// "tsh
@@ -152,7 +152,7 @@ public class IPA {
 	public static final Consonant VD_PALATAL_IMPLOSIVE						= new Consonant(10, "\u0284", Voice.VOICED, Place.PALATAL, Manner.IMPLOSIVE);							// dj<
 //	public static final Consonant BVD_VELAR_STOP							= new Consonant(10, "g\u0324", Voice.BREATHY, Place.VELAR, Manner.STOP);							// gh
 	public static final Consonant PALATALIZED_VD_BILABIAL_NASAL				= new Consonant(10, "m\u02B2", Voice.VOICED, Place.BILABIAL, Manner.NASAL);							// mJ
-	public static final Consonant PRENASALIZED_VD_PALATO_ALVEOLAR_SIB_AFFRICATE	= new Consonant(10, "nd\u0361\u0292", Voice.VOICED, Place.PALATO_ALVEOLAR, Manner.SIB_AFFRICATE);							// ndZ
+//	public static final Consonant PRENASALIZED_VD_PALATO_ALVEOLAR_SIB_AFFRICATE	= new Consonant(10, "nd\u0361\u0292", Voice.VOICED, Place.PALATO_ALVEOLAR, Manner.SIB_AFFRICATE);							// ndZ
 //	public static final Consonant VD_ALVEOLAR_								= new Consonant(Voice.VOICED, Place.ALVEOLAR, Manner.STOP, 10, "r");							// rr
 //	public static final Consonant VLA_RETROFLEX_STOP						= new Consonant(10, "\u0288\u02B0", Voice.VOICELESS, Aspiration.ASPIRATED, Place.RETROFLEX, Manner.STOP);							// t.h
 //	public static final Consonant VL_DENTAL_NASAL							= new Consonant(Voice.VOICELESS, Place.DENTAL, Manner.NASAL, 9, "n\u0325");							// "hn	*
@@ -185,15 +185,15 @@ public class IPA {
 	public static final Consonant VD_ALVEOLO_PALATAL_SIB_FRICATIVE			= new Consonant(7, "\u0291", Voice.VOICED, Place.ALVEOLO_PALATAL, Manner.SIB_FRICATIVE);							// z,
 //	public static final Consonant PALATALIZED_VD_DENTAL_LAT_APPROXIMANT		= new Consonant(Voice.VOICED, Place.DENTAL, Manner.LAT_APPROXIMANT, 6, "l\u02B2");							// "lJ	*
 //	public static final Consonant VL_DENTAL_LAT_AFFRICATE					= new Consonant(Voice.VOICELESS, Place.DENTAL, Manner.LAT_AFFRICATE, 6, "t\u0361\u026C");							// "tlF	*
-	public static final Consonant PRENASALIZED_VL_VELAR_STOP				= new Consonant(6, "\u014B\u0361k", Voice.VOICELESS, Place.VELAR, Manner.STOP);							// Nk
-	public static final Consonant PRENASALIZED_VD_LABIAL_VELAR_STOP			= new Consonant(6, "nmg\u0361b", Voice.VOICED, Place.BILABIAL, Place.VELAR, Manner.STOP);							// Nmgb
+//	public static final Consonant PRENASALIZED_VL_VELAR_STOP				= new Consonant(6, "\u014B\u0361k", Voice.VOICELESS, Place.VELAR, Manner.STOP);							// Nk
+//	public static final Consonant PRENASALIZED_VD_LABIAL_VELAR_STOP			= new Consonant(6, "nmg\u0361b", Voice.VOICED, Place.BILABIAL, Place.VELAR, Manner.STOP);							// Nmgb
 //	public static final Consonant BVD_RETROFLEX_STOP						= new Consonant(6, "\u0257\u0324", Voice.BREATHY, Place.RETROFLEX, Manner.STOP);							// d.h
 //	public static final Consonant VD_PALATO_ALVEOLAR_STOP					= new Consonant(Voice.VOICED, Place.PALATO_ALVEOLAR, Manner.STOP, 6, "d");							// d_
 //	public static final Consonant LABIALIZED_VD_VELAR_FRICATIVE				= new Consonant(6, "\u0263\u02B7", Labialization.LABIALIZED, Voice.VOICED, Place.VELAR, Manner.NONSIB_FRICATIVE);							// gFW
 //	public static final Consonant LARYNGEALIZED_VL_VELAR_STOP				= new Consonant(Voice.VOICELESS, Place.VELAR, Manner.STOP, 6, "k");							// k*
-	public static final Consonant PRENASALIZED_VL_BILABIAL_STOP				= new Consonant(6, "m\u0361p", Voice.VOICELESS, Place.BILABIAL, Manner.STOP);							// mp
+//	public static final Consonant PRENASALIZED_VL_BILABIAL_STOP				= new Consonant(6, "m\u0361p", Voice.VOICELESS, Place.BILABIAL, Manner.STOP);							// mp
 //	public static final Consonant PRENASALIZED_VD_DENTAL_STOP				= new Consonant(Voice.VOICED, Place.DENTAL, Manner.STOP, 6, "n\u0361d");							// ndD	*
-	public static final Consonant PRENASALIZED_VD_PALATAL_STOP				= new Consonant(6, "\u0272\u0361\u025F", Voice.VOICED, Place.PALATAL, Manner.STOP);							// ndj
+//	public static final Consonant PRENASALIZED_VD_PALATAL_STOP				= new Consonant(6, "\u0272\u0361\u025F", Voice.VOICED, Place.PALATAL, Manner.STOP);							// ndj
 //	public static final Consonant VL_DENTAL_EJECTIVE_SIB_AFFRICATE			= new Consonant(Voice.VOICELESS, Place.DENTAL, Ejectivity.EJECTIVE, Manner.SIB_AFFRICATE, 6, "t\u0361s\u02BC");							// tDs'	*
 	public static final Consonant VD_LABIODENTAL_APPROXIMANT				= new Consonant(6, "\u028B", Voice.VOICED, Place.LABIODENTAL, Manner.APPROXIMANT);							// vA
 //	public static final Consonant LABIALIZED_VD_PALATAL_APPROXIMANT			= new Consonant(6, "\u0265", Labialization.LABIALIZED, Voice.VOICED, Place.PALATAL, Manner.APPROXIMANT);							// wj
@@ -206,7 +206,7 @@ public class IPA {
 //	public static final Consonant LABIALIZED_VL_GLOTTAL_FRICATIVE			= new Consonant(5, "h\u02B7", Labialization.LABIALIZED, Voice.VOICELESS, Place.GLOTTAL, Manner.NONSIB_FRICATIVE);							// hW
 //	public static final Consonant LARYNGEALIZED_VD_ALVEOLAR_LAT_APPROXIMANT	= new Consonant(Voice.VOICED, Place.ALVEOLAR, Manner.LAT_APPROXIMANT, 5, "l");							// l*
 //	public static final Consonant LABIALIZED_VD_BILABIAL_NASAL				= new Consonant(5, "m\u02B7", Labialization.LABIALIZED, Voice.VOICED, Place.BILABIAL, Manner.NASAL);							// mW
-	public static final Consonant PRENASALIZED_VD_ALVEOLAR_SIB_AFFRICATE	= new Consonant(5, "nd\u0361z", Voice.VOICED, Place.ALVEOLAR, Manner.SIB_AFFRICATE);							// ndz
+//	public static final Consonant PRENASALIZED_VD_ALVEOLAR_SIB_AFFRICATE	= new Consonant(5, "nd\u0361z", Voice.VOICED, Place.ALVEOLAR, Manner.SIB_AFFRICATE);							// ndz
 	public static final Consonant NASALIZED_VD_DENTAL_AFFRICATED_CLICK		= new Consonant(5, "", Voice.VOICED, Place.DENTAL, Manner.CLICK);							// n|
 //	public static final Consonant LARYNGEALIZED_VL_BILABIAL_STOP			= new Consonant(Voice.VOICELESS, Place.BILABIAL, Manner.STOP, 5, "p");							// p*
 	public static final Consonant VL_ALVEOLAR_LAT_AFFRICATE					= new Consonant(5, "t\u0361\u026C", Voice.VOICELESS, Place.ALVEOLAR, Manner.LAT_AFFRICATE);							// tlF
@@ -320,8 +320,7 @@ public class IPA {
 	public static final Consonant[] UVULAR_STOPS = { VL_UVULAR_STOP, VD_UVULAR_STOP };
 	public static final Consonant[] UVULAR_FRICATIVES = { VL_UVULAR_FRICATIVE, VD_UVULAR_FRICATIVE };
 	
-	public static final Consonant[] LABIAL_VELARS = { VD_LABIAL_VELAR_STOP, VD_LABIAL_VELAR_NASAL,
-			PRENASALIZED_VD_LABIAL_VELAR_STOP };
+	public static final Consonant[] LABIAL_VELARS = { VD_LABIAL_VELAR_STOP, VD_LABIAL_VELAR_NASAL };
 	
 	// Other consonant categories
 	public static final Consonant[] EJECTIVES = { VL_BILABIAL_EJECTIVE_STOP, VL_ALVEOLAR_EJECTIVE_STOP,
