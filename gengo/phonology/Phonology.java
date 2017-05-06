@@ -80,19 +80,27 @@ public class Phonology {
 		
 		new IPA();
 		
-		// Generate phonology
-		choosePhonemeTypes();
+		choosePhonemes(false);
 		
-		chooseConsonantInventory();
-		chooseConsonants();
-		
-		chooseVowelInventory();
-		chooseVowels();
+		syllableStructure = new SyllableStructure(consonants, vowels, random);
+	}
+	
+	// Choose all consonants and vowels for the language, plus test flag to use all possible phonemes
+	private void choosePhonemes(boolean useAllPhonemes) {
+		if (useAllPhonemes)
+			getAllPhonemes();
+		else {
+			choosePhonemeTypes();
+			
+			chooseConsonantInventory();
+			chooseConsonants();
+			
+			chooseVowelInventory();
+			chooseVowels();
+		}
 		
 		Collections.sort(consonants);
 		Collections.sort(vowels);
-		
-		syllableStructure = new SyllableStructure(consonants, vowels, random);
 	}
 	
 	// Choose what types of sounds will be in the inventory

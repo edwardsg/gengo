@@ -33,7 +33,7 @@ public abstract class Phoneme implements Comparable<Phoneme> {
 		return symbol.compareTo(other.symbol);
 	}
 	
-	public interface Feature {}
+	public abstract interface Feature {}
 	
 	public int weight() { return occurrence; }
 	public double probability() { return probability; }

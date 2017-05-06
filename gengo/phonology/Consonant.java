@@ -130,7 +130,7 @@ public class Consonant extends Phoneme {
 		NASAL("Nasal"), STOP("Stop"), SIB_AFFRICATE("Sibilant affricate"), NONSIB_AFFRICATE("Non-sibilant affricate"),
 		SIB_FRICATIVE("Sibilant fricative"), NONSIB_FRICATIVE("Non-sibilant fricative"), APPROXIMANT("Approximant"),
 		FLAP("Flap"), TRILL("Trill"), LAT_AFFRICATE("Lateral affricate"), LAT_FRICATIVE("Lateral fricative"),
-		LAT_APPROXIMANT("Lateral approximant"), LAT_FLAP("Lateral flap"), IMPLOSIVE("Implosive"), CLICK("Click");
+		LAT_APPROXIMANT("Lateral approximant"), LAT_FLAP("Lateral flap"), CLICK("Click"), IMPLOSIVE("Implosive");
 		
 		private final String name;
 		

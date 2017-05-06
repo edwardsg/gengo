@@ -68,7 +68,7 @@ public class SyllableStructure {
 				Consonant consonant;
 				do {
 					consonant = consonants.get(random.nextInt(consonants.size()));
-				} while (changePhoneme(consonant) == null);
+				} while ((consonant = (Consonant) changePhoneme(consonant)) == null);
 				
 				previousPhoneme = consonant;
 				syllable.addPhoneme(consonant);
@@ -90,7 +90,7 @@ public class SyllableStructure {
 				Consonant consonant;
 				do {
 					consonant = consonants.get(random.nextInt(consonants.size()));
-				} while (changePhoneme(consonant) == null);
+				} while ((consonant = (Consonant) changePhoneme(consonant)) == null);
 				
 				previousPhoneme = consonant;
 				syllable.addPhoneme(consonant);
