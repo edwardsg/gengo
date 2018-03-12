@@ -1,10 +1,9 @@
 package gengo.grammar;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import gengo.RandomGen;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class GenderSystem extends NominalCategory {	
 	GenderSystem(Random random) {

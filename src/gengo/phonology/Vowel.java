@@ -1,7 +1,7 @@
 package gengo.phonology;
 
 /* Contains all possible vowel phonemes with their features, occurrence in UPSID, and IPA symbols */
-public class Vowel extends Phoneme {	
+public class Vowel extends Phoneme {
 	private final Height height;
 	private final Backness backness;
 	private final Roundedness roundedness;
