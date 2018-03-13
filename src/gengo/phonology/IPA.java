@@ -9,7 +9,7 @@ import java.util.List;
 class IPA {
     public static List<Consonant> CONSONANTS = new ArrayList<>();
     public static List<Vowel> VOWELS = new ArrayList<>();
-    
+
     /* Consonants */
     private static final Consonant VD_BILABIAL_NASAL = new Consonant(425, "m", Voice.VOICED, Place.BILABIAL, Manner.NASAL);                    // UPSID   m
     public static final Consonant VL_VELAR_STOP = new Consonant(403, "k", Voice.VOICELESS, Place.VELAR, Manner.STOP);                            // k
@@ -204,7 +204,7 @@ class IPA {
     private static final Consonant VL_ALVEOLAR_LAT_AFFRICATE = new Consonant(5, "t\u0361\u026C", Voice.VOICELESS, Place.ALVEOLAR, Manner.LAT_AFFRICATE);                            // tlF
     //	public static final Consonant PALATALIZED_VD_LABIODENTAL_FRICATIVE		= new Consonant(5, "v\u02B2", Voice.VOICED, Place.LABIODENTAL, Manner.NONSIB_FRICATIVE);							// vJ
     private static final Consonant VL_DENTAL_AFFRICATED_CLICK = new Consonant(5, "\u01C0", Voice.VOICED, Place.ALVEOLAR, Manner.CLICK);                            // |
-    
+
     /* Vowel */
     public static final Vowel CLOSE_FRONT_UR = new Vowel(393, "i", Height.CLOSE, Backness.FRONT, Roundedness.UNROUNDED);                                    // UPSID   i
     public static final Vowel OPEN_CENTRAL_UR = new Vowel(392, "a", Height.OPEN, Backness.CENTRAL, Roundedness.UNROUNDED);                                            // a
@@ -275,56 +275,56 @@ class IPA {
 //	public static final Vowel L_OPEN_FRONT_UR			= new Vowel(5, "a\u02D0", Length.LONG, Height.OPEN, Backness.FRONT, Roundedness.UNROUNDED); 							// a+:
 //	public static final Vowel N_OPEN_FRONT_UR			= new Vowel(5, "a\u0303", Nasalization.NASAL, Height.OPEN, Backness.FRONT, Roundedness.UNROUNDED); 						// a+~
 //	public static final Vowel CLOSE_MID_FRONT_UR		= new Vowel(124, "e", Height.CLOSE_MID, Backness.FRONT, Roundedness.UNROUNDED); 										// ah
-    
+
     // Consonant categories - by manner of articulation
-    public static final Consonant[] BASIC_PLOSIVE_SYSTEM = {VL_BILABIAL_STOP, VL_ALVEOLAR_STOP, VL_VELAR_STOP,
-            VD_BILABIAL_STOP, VD_ALVEOLAR_STOP, VD_VELAR_STOP};
-    
-    public static final Consonant[] NASALS = {VD_BILABIAL_NASAL, VD_ALVEOLAR_NASAL, VD_RETROFLEX_NASAL,
-            VD_VELAR_NASAL};
-    public static final Consonant[] STOPS = {VL_BILABIAL_STOP, VD_BILABIAL_STOP, VL_ALVEOLAR_STOP,
+    public static final Consonant[] BASIC_PLOSIVE_SYSTEM = { VL_BILABIAL_STOP, VL_ALVEOLAR_STOP, VL_VELAR_STOP,
+            VD_BILABIAL_STOP, VD_ALVEOLAR_STOP, VD_VELAR_STOP };
+
+    public static final Consonant[] NASALS = { VD_BILABIAL_NASAL, VD_ALVEOLAR_NASAL, VD_RETROFLEX_NASAL,
+            VD_VELAR_NASAL };
+    public static final Consonant[] STOPS = { VL_BILABIAL_STOP, VD_BILABIAL_STOP, VL_ALVEOLAR_STOP,
             VD_ALVEOLAR_STOP, VL_RETROFLEX_STOP, VD_RETROFLEX_STOP, VL_PALATAL_STOP, VD_PALATAL_STOP,
-            VL_VELAR_STOP, VD_VELAR_STOP, VL_UVULAR_STOP, VD_UVULAR_STOP};
-    public static final Consonant[] FRICATIVES = {VL_ALVEOLAR_SIB_FRICATIVE, VD_ALVEOLAR_SIB_FRICATIVE,
+            VL_VELAR_STOP, VD_VELAR_STOP, VL_UVULAR_STOP, VD_UVULAR_STOP };
+    public static final Consonant[] FRICATIVES = { VL_ALVEOLAR_SIB_FRICATIVE, VD_ALVEOLAR_SIB_FRICATIVE,
             VD_PALATO_ALVEOLAR_SIB_FRICATIVE, VL_RETROFLEX_SIB_FRICATIVE, VD_RETROFLEX_SIB_FRICATIVE,
             VL_ALVEOLO_PALATAL_SIB_FRICATIVE, VD_ALVEOLO_PALATAL_SIB_FRICATIVE, VL_BILABIAL_FRICATIVE,
             VD_BILABIAL_FRICATIVE, VL_LABIODENTAL_FRICATIVE, VD_LABIODENTAL_FRICATIVE, VD_DENTAL_FRICATIVE,
             VL_DENTAL_FRICATIVE, VL_ALVEOLO_PALATAL_SIB_FRICATIVE, VD_PALATAL_FRICATIVE, VL_VELAR_FRICATIVE,
             VD_VELAR_FRICATIVE, VL_UVULAR_FRICATIVE, VD_UVULAR_FRICATIVE, VL_PHARYNGEAL_FRICATIVE,
-            VD_PHARYNGEAL_FRICATIVE, VL_GLOTTAL_FRICATIVE, VD_GLOTTAL_FRICATIVE};
-    
-    public static final Consonant[] LATERALS = {VL_ALVEOLAR_LAT_AFFRICATE, VL_ALVEOLAR_LAT_FRICATIVE,
+            VD_PHARYNGEAL_FRICATIVE, VL_GLOTTAL_FRICATIVE, VD_GLOTTAL_FRICATIVE };
+
+    public static final Consonant[] LATERALS = { VL_ALVEOLAR_LAT_AFFRICATE, VL_ALVEOLAR_LAT_FRICATIVE,
             VD_ALVEOLAR_LAT_FRICATIVE, VD_ALVEOLAR_LAT_APPROXIMANT, VD_RETROFLEX_LAT_APPROXIMANT,
-            VD_PALATAL_LAT_APPROXIMANT, VD_ALVEOLAR_LAT_FLAP, VD_RETROFLEX_LAT_FLAP};
-    public static final Consonant[] LATERAL_OBSTRUENTS = {VL_ALVEOLAR_LAT_AFFRICATE, VL_ALVEOLAR_LAT_FRICATIVE,
-            VD_ALVEOLAR_LAT_FRICATIVE};
-    public static final Consonant[] LATERAL_OTHERS = {VD_RETROFLEX_LAT_APPROXIMANT, VD_PALATAL_LAT_APPROXIMANT,
-            VD_ALVEOLAR_LAT_FLAP, VD_RETROFLEX_LAT_FLAP};
-    
-    public static final Consonant[] CLICKS = {VL_DENTAL_AFFRICATED_CLICK, NASALIZED_VD_DENTAL_AFFRICATED_CLICK};
-    
+            VD_PALATAL_LAT_APPROXIMANT, VD_ALVEOLAR_LAT_FLAP, VD_RETROFLEX_LAT_FLAP };
+    public static final Consonant[] LATERAL_OBSTRUENTS = { VL_ALVEOLAR_LAT_AFFRICATE, VL_ALVEOLAR_LAT_FRICATIVE,
+            VD_ALVEOLAR_LAT_FRICATIVE };
+    public static final Consonant[] LATERAL_OTHERS = { VD_RETROFLEX_LAT_APPROXIMANT, VD_PALATAL_LAT_APPROXIMANT,
+            VD_ALVEOLAR_LAT_FLAP, VD_RETROFLEX_LAT_FLAP };
+
+    public static final Consonant[] CLICKS = { VL_DENTAL_AFFRICATED_CLICK, NASALIZED_VD_DENTAL_AFFRICATED_CLICK };
+
     // By place of articulation
-    public static final Consonant[] BILABIALS = {VD_BILABIAL_NASAL, VL_BILABIAL_STOP,
-            VL_BILABIAL_FRICATIVE, VD_BILABIAL_FRICATIVE};
-    
-    public static final Consonant[] UVULARS = {VL_UVULAR_STOP, VD_UVULAR_STOP, VL_UVULAR_FRICATIVE,
-            VD_UVULAR_FRICATIVE};
-    public static final Consonant[] UVULAR_STOPS = {VL_UVULAR_STOP, VD_UVULAR_STOP};
-    public static final Consonant[] UVULAR_FRICATIVES = {VL_UVULAR_FRICATIVE, VD_UVULAR_FRICATIVE};
-    
-    public static final Consonant[] LABIAL_VELARS = {VD_LABIAL_VELAR_STOP, VD_LABIAL_VELAR_NASAL};
-    
+    public static final Consonant[] BILABIALS = { VD_BILABIAL_NASAL, VL_BILABIAL_STOP,
+            VL_BILABIAL_FRICATIVE, VD_BILABIAL_FRICATIVE };
+
+    public static final Consonant[] UVULARS = { VL_UVULAR_STOP, VD_UVULAR_STOP, VL_UVULAR_FRICATIVE,
+            VD_UVULAR_FRICATIVE };
+    public static final Consonant[] UVULAR_STOPS = { VL_UVULAR_STOP, VD_UVULAR_STOP };
+    public static final Consonant[] UVULAR_FRICATIVES = { VL_UVULAR_FRICATIVE, VD_UVULAR_FRICATIVE };
+
+    public static final Consonant[] LABIAL_VELARS = { VD_LABIAL_VELAR_STOP, VD_LABIAL_VELAR_NASAL };
+
     // Other consonant categories
-    public static final Consonant[] EJECTIVES = {VL_BILABIAL_EJECTIVE_STOP, VL_ALVEOLAR_EJECTIVE_STOP,
+    public static final Consonant[] EJECTIVES = { VL_BILABIAL_EJECTIVE_STOP, VL_ALVEOLAR_EJECTIVE_STOP,
             VL_PALATAL_EJECTIVE_STOP, VL_VELAR_EJECTIVE_STOP, VL_UVULAR_EJECTIVE_STOP,
             VL_ALVEOLAR_EJECTIVE_SIB_AFFRICATE, VL_ALVEOLAR_EJECTIVE_LAT_AFFRICATE,
-            VL_PALATO_ALVEOLAR_EJECTIVE_SIB_AFFRICATE};
-    public static final Consonant[] IMPLOSIVES = {VD_BILABIAL_IMPLOSIVE, VD_ALVEOLAR_IMPLOSIVE,
-            VD_PALATAL_IMPLOSIVE, VD_VELAR_IMPLOSIVE};
-    
+            VL_PALATO_ALVEOLAR_EJECTIVE_SIB_AFFRICATE };
+    public static final Consonant[] IMPLOSIVES = { VD_BILABIAL_IMPLOSIVE, VD_ALVEOLAR_IMPLOSIVE,
+            VD_PALATAL_IMPLOSIVE, VD_VELAR_IMPLOSIVE };
+
     // Vowel categories
-    public static final Vowel[] NASAL_VOWELS = {N_CLOSE_BACK_RD, N_CLOSE_BACK_UR, N_CLOSE_CENTRAL_UR,
+    public static final Vowel[] NASAL_VOWELS = { N_CLOSE_BACK_RD, N_CLOSE_BACK_UR, N_CLOSE_CENTRAL_UR,
             N_CLOSE_FRONT_UR, N_MID_BACK_RD, N_MID_CENTRAL_UR, N_MID_FRONT_UR, N_NEAR_CLOSE_NEAR_BACK_RD,
             N_NEAR_CLOSE_NEAR_FRONT_UR, N_NEAR_OPEN_FRONT_UR, N_OPEN_BACK_UR, N_OPEN_CENTRAL_UR,
-            N_OPEN_MID_BACK_RD, N_OPEN_MID_FRONT_UR, LN_CLOSE_BACK_RD, LN_CLOSE_FRONT_UR, LN_OPEN_CENTRAL_UR};
+            N_OPEN_MID_BACK_RD, N_OPEN_MID_FRONT_UR, LN_CLOSE_BACK_RD, LN_CLOSE_FRONT_UR, LN_OPEN_CENTRAL_UR };
 }

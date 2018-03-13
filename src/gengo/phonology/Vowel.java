@@ -7,19 +7,19 @@ public class Vowel extends Phoneme {
     private final Roundedness roundedness;
     private final Length length;
     private final boolean nasalized;
-    
+
     Vowel(int occurence, String symbol, Feature... features) {
         super(occurence, symbol, features);
-        
+
         Height height = Height.OPEN;
         Backness backness = Backness.FRONT;
         Roundedness roundedness = Roundedness.UNROUNDED;
         Length length = Length.SHORT;
         boolean nasalized = false;
-        
+
         for (Feature feature : features) {
             Class<? extends Feature> type = feature.getClass();
-            
+
             if (type == Height.class)
                 height = (Height) feature;
             else if (type == Backness.class)
@@ -31,103 +31,103 @@ public class Vowel extends Phoneme {
             else if (feature == Nasalization.NASAL)
                 nasalized = true;
         }
-        
+
         this.height = height;
         this.backness = backness;
         this.roundedness = roundedness;
         this.length = length;
         this.nasalized = nasalized;
-        
+
         IPA.VOWELS.add(this);
     }
-    
+
     // Getters
     public Height height() {
         return height;
     }
-    
+
     public Backness backness() {
         return backness;
     }
-    
+
     public Roundedness roundedness() {
         return roundedness;
     }
-    
+
     public Length length() {
         return length;
     }
-    
+
     public boolean nasalized() {
         return nasalized;
     }
-    
+
     // Turns vowel into English name based on IPA standards
     public String toString() {
         // Basic name with height, backness, and roundedness
         String name = height.name + " " + backness.name.toLowerCase() + " " + roundedness.name.toLowerCase() + " vowel";
-        
+
         // Add nasalization and length if present
         if (nasalized)
             name = "Nasalized " + name.toLowerCase();
         if (!length.equals(Length.SHORT))
             name = length.name + " " + name.toLowerCase();
-        
+
         return name;
     }
-    
+
     /* Vowel features - each value has a string name */
-    
+
     // How far the mouth is opened
     public enum Height implements Feature {
         CLOSE("Close"), NEAR_CLOSE("Near-close"), CLOSE_MID("Close-mid"), MID("Mid"), OPEN_MID("Open-mid"), NEAR_OPEN("Near-open"), OPEN("Open");
-        
+
         private final String name;
-        
+
         Height(String name) {
             this.name = name;
         }
     }
-    
+
     // How far back the tongue is placed
     public enum Backness implements Feature {
         FRONT("Front"), NEAR_FRONT("Near-front"), CENTRAL("Central"), NEAR_BACK("Near-back"), BACK("Back");
-        
+
         private final String name;
-        
+
         Backness(String name) {
             this.name = name;
         }
     }
-    
+
     // Whether or not the vowel is rounded - may include compressed rounding
     public enum Roundedness implements Feature {
         UNROUNDED("Unrounded"), ROUNDED("Rounded");
-        
+
         private final String name;
-        
+
         Roundedness(String name) {
             this.name = name;
         }
     }
-    
+
     // How long a vowel is held - default is short
     public enum Length implements Feature {
         EXTRA_SHORT("Extra-short"), SHORT("Short"), LONG("Long"), HALF_LONG("Half-long"), OVERLONG("Overlong");
-        
+
         private final String name;
-        
+
         Length(String name) {
             this.name = name;
         }
     }
-    
+
     // Whether or not a vowel is released nasally - may include partial nasalization
     public enum Nasalization implements Feature {
         ORAL("Oral"), NASAL("Nasal");
-        
+
         private final String name;
-        
+
         Nasalization(String name) {
             this.name = name;
         }
