@@ -30,6 +30,7 @@ public class LanguageGenerator {
     private static void buildHTML() {
         try {
             new HTMLBuilder(language, "lang").build();
+            System.out.println("Created lang.html");
         } catch (IOException e) {
             System.err.println("Something went wrong while writing HTML file.");
             e.printStackTrace();

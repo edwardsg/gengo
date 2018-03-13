@@ -17,7 +17,7 @@ class LanguageBuilder {
 
         Random random = new Random(seed);
 
-        language.phonology = new Phonology(random);
+        language.phonology = PhonologyBuilder.build(random);
         language.grammar = new Grammar(random);
         language.lexicon = new Lexicon(random, language.phonology);
 

@@ -1,7 +1,7 @@
 package gengo.phonology;
 
 /* Contains phonological statistics */
-class Data {
+public class Data {
     // Number of languages in UPSID
     public static final int LANGUAGE_SAMPLE_SIZE = 451;
 

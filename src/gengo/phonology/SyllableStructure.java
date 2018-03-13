@@ -22,7 +22,7 @@ public class SyllableStructure {
 
     private Phoneme previousPhoneme = null;
 
-    SyllableStructure(List<Consonant> consonants, List<Vowel> vowels, Random random) {
+    public SyllableStructure(List<Consonant> consonants, List<Vowel> vowels, Random random) {
         this.random = random;
         this.consonants = consonants;
         this.vowels = vowels;

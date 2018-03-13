@@ -6,7 +6,7 @@ import gengo.phonology.Vowel.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class IPA {
+public class IPA {
     public static List<Consonant> CONSONANTS = new ArrayList<>();
     public static List<Vowel> VOWELS = new ArrayList<>();
 
