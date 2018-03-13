@@ -10,7 +10,7 @@ import gengo.phonology.Vowel;
 import java.io.*;
 import java.util.Map;
 
-public class HTMLBuilder {
+class HTMLBuilder {
     private static final int HTML_FONT_SIZE = 5;
 
     private final Language language;
@@ -72,18 +72,18 @@ public class HTMLBuilder {
 
     private void writeConsonants() throws IOException {
         writer.write("\t\t<p>\n");
-        writer.write("\t\tConsonants (" + language.phonology().consonantInventory() + "): <br>\n");
+        writer.write("\t\tConsonants (" + language.phonology.consonantInventory() + "): <br>\n");
 
-        for (Consonant consonant : language.phonology().consonants())
+        for (Consonant consonant : language.phonology.consonants())
             writePhonemeDescription(consonant);
     }
 
     private void writeVowels() throws IOException {
         writer.write("\n");
         writer.write("\t\t<p>\n");
-        writer.write("\t\tVowels (" + language.phonology().vowelInventory() + "): <br>\n");
+        writer.write("\t\tVowels (" + language.phonology.vowelInventory() + "): <br>\n");
 
-        for (Vowel vowel : language.phonology().vowels())
+        for (Vowel vowel : language.phonology.vowels())
             writePhonemeDescription(vowel);
     }
 
@@ -104,7 +104,7 @@ public class HTMLBuilder {
         writer.write("\t\t<p>\n");
         writer.write("\t\tSyllable structure: <br>\n");
         writer.write(String.format("<font size=\"%d\"> ", HTML_FONT_SIZE));
-        writer.write("" + language.phonology().syllableStructure() + " </font>\n");
+        writer.write("" + language.phonology.syllableStructure() + " </font>\n");
     }
 
     private void writeGrammar() throws IOException {
@@ -112,7 +112,7 @@ public class HTMLBuilder {
         writer.write("\t\t<p>\n");
         writer.write("\t\tGrammar: <br>\n");
 
-        for (GrammaticalStructure structure : language.grammar().grammaticalStructures())
+        for (GrammaticalStructure structure : language.grammar.grammaticalStructures())
             writer.write("\t\t" + structure.toString() + " <br><br>\n\n");
     }
 
@@ -120,7 +120,7 @@ public class HTMLBuilder {
         writer.write("\n");
         writer.write("\t\t<p>\n");
         writer.write("\t\tWord roots: <br>\n");
-        for (Map.Entry<Primes.BasicPrime, Root> entry : language.lexicon().roots().entrySet()) {
+        for (Map.Entry<Primes.BasicPrime, Root> entry : language.lexicon.roots().entrySet()) {
             writer.write(entry.getKey().name() + ": ");
 
             for (char c : entry.getValue().root().toCharArray())
@@ -140,7 +140,7 @@ public class HTMLBuilder {
     private void writeFooter() throws IOException {
         writer.write("\n");
         writer.write("\t\t<p>\n");
-        writer.write("Seed: " + language.seed() + "\n");
+        writer.write("Seed: " + language.seed + "\n");
 
         writer.write("\n");
     }

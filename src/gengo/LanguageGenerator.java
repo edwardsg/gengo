@@ -9,16 +9,17 @@ public class LanguageGenerator {
 
     public static void main(String[] args) {
         displayConsoleMenu();
-
-        language = new Language();
-
+        buildLanguage();
         printToConsole();
-
         buildHTML();
     }
 
     private static void displayConsoleMenu() {
         System.out.println("\nProcedural Language Generator by Gabriel Edwards\n");
+    }
+
+    private static void buildLanguage() {
+        language = LanguageBuilder.build();
     }
 
     private static void printToConsole() {
