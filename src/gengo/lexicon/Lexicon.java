@@ -39,13 +39,13 @@ public class Lexicon {
         // Each root may be one or more syllables
         int numSyllables = random.nextInt(MAX_ROOT_SYLLABLES) + 1;
         for (int i = 0; i < numSyllables; ++i) {
-            root.addSyllable(phonology.syllableStructure().nextSyllable());
+            root.addSyllable(phonology.syllableStructure.nextSyllable());
 
             if (i < numSyllables - 1 && LanguageGenerator.IPA_SYLLABLE_SEPARATION)
                 root.separateSyllable();
         }
 
-        phonology.syllableStructure().reset();
+        phonology.syllableStructure.reset();
 
         return root;
     }

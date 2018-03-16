@@ -9,18 +9,18 @@ import java.util.Random;
 
 public class PhonologyBuilder {
     // Local data for phonology generation; taken from real-world data but can be changed for specific results
-    private int cMin = Data.MIN_CONSONANT_INVENTORY;
-    private int cMax = Data.MAX_CONSONANT_INVENTORY;
-    private int[] cInvs = Data.CONSONANT_INVENTORIES;
-    private int[] cWeights = Data.CONSONANT_INVENTORY_FREQUENCIES;
+    private static int cMin = Data.MIN_CONSONANT_INVENTORY;
+    private static int cMax = Data.MAX_CONSONANT_INVENTORY;
+    private static int[] cInvs = Data.CONSONANT_INVENTORIES;
+    private static int[] cWeights = Data.CONSONANT_INVENTORY_FREQUENCIES;
 
-    private int vMin = Data.MIN_VOWEL_INVENTORY;
-    private int vMax = Data.MAX_VOWEL_INVENTORY;
+    private static int vMin = Data.MIN_VOWEL_INVENTORY;
+    private static int vMax = Data.MAX_VOWEL_INVENTORY;
 
-    private double rMin = Data.MIN_CONSONANT_VOWEL_RATIO;
-    private double rMax = Data.MAX_CONSONANT_VOWEL_RATIO;
-    private double[] rValues = Data.CONSONANT_VOWEL_RATIOS;
-    private int[] rWeights = Data.CONSONANT_VOWEL_RATIO_FREQUENCIES;
+    private static double rMin = Data.MIN_CONSONANT_VOWEL_RATIO;
+    private static double rMax = Data.MAX_CONSONANT_VOWEL_RATIO;
+    private static double[] rValues = Data.CONSONANT_VOWEL_RATIOS;
+    private static int[] rWeights = Data.CONSONANT_VOWEL_RATIO_FREQUENCIES;
 
     private static Phonology phonology;
     private static Random random;
@@ -37,6 +37,8 @@ public class PhonologyBuilder {
         choosePhonemes(false);
 
         phonology.syllableStructure = new SyllableStructure(phonology.consonants, phonology.vowels, random);
+
+        return phonology;
     }
 
     // Choose all consonants and vowels for the language, plus test flag to use all possible phonemes
@@ -72,65 +74,65 @@ public class PhonologyBuilder {
         // Voicing contrast
         int voicingContrast = RandomGen.chooseIndexByWeights(random, Data.VOICING_CONTRAST_WEIGHTS);
         if (voicingContrast == 3 || voicingContrast == 1)
-            plosiveVoicingContrast = true;
+            phonology.plosiveVoicingContrast = true;
         if (voicingContrast == 3 || voicingContrast == 2)
-            fricativeVoicingContrast = true;
+            phonology.fricativeVoicingContrast = true;
 
         // Basic plosive system from /ptkbdg/
         int plosiveSystem = RandomGen.chooseIndexByWeights(random, Data.PLOSIVE_SYSTEM_WEIGHTS);
         if (plosiveSystem == 1 || plosiveSystem == 2 || plosiveSystem == 0)
-            gPresent = true;
+            phonology.gPresent = true;
         if (plosiveSystem == 1 || plosiveSystem == 3 || plosiveSystem == 0)
-            pPresent = true;
+            phonology.pPresent = true;
 
         // Uvular consonants
         int uvularConsonantType = RandomGen.chooseIndexByWeights(random, Data.UVULAR_WEIGHTS);
         if (uvularConsonantType == 1 || uvularConsonantType == 3)
-            uvularStopsPresent = true;
+            phonology.uvularStopsPresent = true;
         if (uvularConsonantType == 2 || uvularConsonantType == 3)
-            uvularContinuantsPresent = true;
+            phonology.uvularContinuantsPresent = true;
 
         // Glottalized consonants - ejectives and implosives
         int glottalizedType = RandomGen.chooseIndexByWeights(random, Data.GLOTTALIZED_WEIGHTS);
         if (glottalizedType == 1 || glottalizedType == 4 || glottalizedType == 5 || glottalizedType == 7)
-            ejectivesPresent = true;
+            phonology.ejectivesPresent = true;
         if (glottalizedType == 2 || glottalizedType == 4 || glottalizedType == 6 || glottalizedType == 7)
-            implosivesPresent = true;
+            phonology.implosivesPresent = true;
         if (glottalizedType == 3 || glottalizedType == 5 || glottalizedType == 6 || glottalizedType == 7)
-            resonantsPresent = true;
+            phonology.resonantsPresent = true;
 
         // Lateral consonants - L sounds
         int lateralConsonantType = RandomGen.chooseIndexByWeights(random, Data.LATERAL_WEIGHTS);
         if (lateralConsonantType == 1 || lateralConsonantType == 3)
-            lPresent = true;
+            phonology.lPresent = true;
         if (lateralConsonantType == 2)
-            lateralOthersPresent = true;
+            phonology.lateralOthersPresent = true;
         if (lateralConsonantType == 3 || lateralConsonantType == 4)
-            lateralObstruentsPresent = true;
+            phonology.lateralObstruentsPresent = true;
 
         // Missing consonants
         int absentConsonantType = RandomGen.chooseIndexByWeights(random, Data.COMMON_ABSENCE_WEIGHTS);
         if (absentConsonantType == 1 || absentConsonantType == 4)
-            bilabialsPresent = false;
+            phonology.bilabialsPresent = false;
         if (absentConsonantType == 2 || absentConsonantType == 5)
-            fricativesPresent = false;
+            phonology.fricativesPresent = false;
         if (absentConsonantType == 3 || absentConsonantType == 4 || absentConsonantType == 5)
-            nasalsPresent = false;
+            phonology.nasalsPresent = false;
 
         // Presence of uncommon consonants
         int uncommonConsonantType = RandomGen.chooseIndexByWeights(random, Data.UNCOMMON_WEIGHTS);
         if (uncommonConsonantType == 1 || uncommonConsonantType == 5)
-            clicksPresent = true;
+            phonology.clicksPresent = true;
         if (uncommonConsonantType == 2)
-            labialVelarsPresent = true;
+            phonology.labialVelarsPresent = true;
         if (uncommonConsonantType == 3 || uncommonConsonantType == 5 || uncommonConsonantType == 6)
-            pharyngealsPresent = true;
+            phonology.pharyngealsPresent = true;
         if (uncommonConsonantType == 4 || uncommonConsonantType == 5 || uncommonConsonantType == 6)
-            thSoundsPresent = true;
+            phonology.thSoundsPresent = true;
 
         // Nasal vowel contrast
         if (RandomGen.chooseIndexByWeights(random, Data.NASAL_CONTRAST_WEIGHTS) == 1)
-            nasalVowelContrast = true;
+            phonology.nasalVowelContrast = true;
     }
 
     // Generate number of consonant phonemes based on possible ranges
@@ -138,7 +140,7 @@ public class PhonologyBuilder {
         int i = RandomGen.chooseIndexByWeights(random, cWeights);
 
         // Choose random number within chosen range, bottom clamped to minimum, top range up to maximum value
-        consonantInventory = Math.max(cMin, random.nextInt((i == cInvs.length - 1 ? cMax : cInvs[i + 1]) - cInvs[i]) + cInvs[i]);
+        phonology.consonantInventory = Math.max(cMin, random.nextInt((i == cInvs.length - 1 ? cMax : cInvs[i + 1]) - cInvs[i]) + cInvs[i]);
     }
 
     // Pick number of consonants from Consonant enum equal to consonant inventory
@@ -152,29 +154,29 @@ public class PhonologyBuilder {
             addConsonant(consonant, availableConsonants);
 
         // Choosing and adding consonants to inventory
-        while (consonants.size() < consonantInventory) {
+        while (phonology.consonants.size() < phonology.consonantInventory) {
             // Uvulars
-            if (uvularStopsPresent)
+            if (phonology.uvularStopsPresent)
                 addConsonant(chooseConsonantFromSet(IPA.UVULAR_STOPS), availableConsonants);
-            if (uvularContinuantsPresent)
+            if (phonology.uvularContinuantsPresent)
                 addConsonant(chooseConsonantFromSet(IPA.UVULAR_FRICATIVES), availableConsonants);
 
             // Glottalized consonants
-            if (ejectivesPresent)
+            if (phonology.ejectivesPresent)
                 addConsonant(chooseConsonantFromSet(IPA.EJECTIVES), availableConsonants);
-            if (implosivesPresent)
+            if (phonology.implosivesPresent)
                 addConsonant(chooseConsonantFromSet(IPA.IMPLOSIVES), availableConsonants);
 
             // Lateral consonants
-            if (lateralObstruentsPresent)
+            if (phonology.lateralObstruentsPresent)
                 addConsonant(chooseConsonantFromSet(IPA.LATERAL_OBSTRUENTS), availableConsonants);
-            if (lateralOthersPresent)
+            if (phonology.lateralOthersPresent)
                 addConsonant(chooseConsonantFromSet(IPA.LATERAL_OTHERS), availableConsonants);
 
             // Uncommon consonants
-            if (clicksPresent)
+            if (phonology.clicksPresent)
                 addConsonant(chooseConsonantFromSet(IPA.CLICKS), availableConsonants);
-            if (labialVelarsPresent)
+            if (phonology.labialVelarsPresent)
                 addConsonant(chooseConsonantFromSet(IPA.LABIAL_VELARS), availableConsonants);
 
             // Other consonants
@@ -184,7 +186,7 @@ public class PhonologyBuilder {
 
             // If we run out of usable consonants
             if (availableConsonants.size() == 0)
-                consonantInventory = consonants.size();
+                phonology.consonantInventory = phonology.consonants.size();
         }
     }
 
@@ -193,26 +195,26 @@ public class PhonologyBuilder {
         ArrayList<Consonant> requiredConsonants = new ArrayList<>();
 
         // Plosive system - /ptkbdg/
-        if (pPresent)
+        if (phonology.pPresent)
             requiredConsonants.add(IPA.VL_BILABIAL_STOP);
         requiredConsonants.add(IPA.VL_ALVEOLAR_STOP);
         requiredConsonants.add(IPA.VL_VELAR_STOP);
 
-        if (plosiveVoicingContrast) {
+        if (phonology.plosiveVoicingContrast) {
             requiredConsonants.add(IPA.VD_BILABIAL_STOP);
             requiredConsonants.add(IPA.VD_ALVEOLAR_STOP);
-            if (gPresent)
+            if (phonology.gPresent)
                 requiredConsonants.add(IPA.VD_VELAR_STOP);
         }
 
         // L sound
-        if (lPresent)
+        if (phonology.lPresent)
             requiredConsonants.add(IPA.VD_ALVEOLAR_LAT_APPROXIMANT);
 
         // Th sounds
-        if (thSoundsPresent) {
+        if (phonology.thSoundsPresent) {
             requiredConsonants.add(IPA.VL_DENTAL_FRICATIVE);
-            if (fricativeVoicingContrast)
+            if (phonology.fricativeVoicingContrast)
                 requiredConsonants.add(IPA.VD_DENTAL_FRICATIVE);
         }
 
@@ -226,43 +228,43 @@ public class PhonologyBuilder {
 
         // Add all consonants, not including voiced if no voicing contrast
         for (Consonant consonant : IPA.CONSONANTS)
-            if (plosiveVoicingContrast || !consonant.hasFeatures(Consonant.Manner.STOP, Consonant.Voice.VOICED))
+            if (phonology.plosiveVoicingContrast || !consonant.hasFeatures(Consonant.Manner.STOP, Consonant.Voice.VOICED))
                 availableConsonants.add(consonant);
-            else if (fricativeVoicingContrast || !(consonant.hasFeature(Consonant.Voice.VOICED) && (consonant.hasFeature(Consonant.Manner.SIB_FRICATIVE) || consonant.hasFeature(Consonant.Manner.NONSIB_FRICATIVE))))
+            else if (phonology.fricativeVoicingContrast || !(consonant.hasFeature(Consonant.Voice.VOICED) && (consonant.hasFeature(Consonant.Manner.SIB_FRICATIVE) || consonant.hasFeature(Consonant.Manner.NONSIB_FRICATIVE))))
                 availableConsonants.add(consonant);
 
         // Basic plosives
-        removeConsonantsIfAbsent(availableConsonants, pPresent, IPA.VL_BILABIAL_STOP);
-        removeConsonantsIfAbsent(availableConsonants, gPresent, IPA.VD_VELAR_STOP);
+        removeConsonantsIfAbsent(availableConsonants, phonology.pPresent, IPA.VL_BILABIAL_STOP);
+        removeConsonantsIfAbsent(availableConsonants, phonology.gPresent, IPA.VD_VELAR_STOP);
 
         // Uvulars
-        removeConsonantsIfAbsent(availableConsonants, uvularStopsPresent, IPA.UVULAR_STOPS);
-        removeConsonantsIfAbsent(availableConsonants, uvularContinuantsPresent, IPA.UVULAR_FRICATIVES);
+        removeConsonantsIfAbsent(availableConsonants, phonology.uvularStopsPresent, IPA.UVULAR_STOPS);
+        removeConsonantsIfAbsent(availableConsonants, phonology.uvularContinuantsPresent, IPA.UVULAR_FRICATIVES);
 
         // Glottalized consonants
-        removeConsonantsIfAbsent(availableConsonants, ejectivesPresent, IPA.EJECTIVES);
-        removeConsonantsIfAbsent(availableConsonants, implosivesPresent, IPA.IMPLOSIVES);
+        removeConsonantsIfAbsent(availableConsonants, phonology.ejectivesPresent, IPA.EJECTIVES);
+        removeConsonantsIfAbsent(availableConsonants, phonology.implosivesPresent, IPA.IMPLOSIVES);
 
         // Laterals
-        removeConsonantsIfAbsent(availableConsonants, lPresent, IPA.VD_ALVEOLAR_APPROXIMANT);
-        removeConsonantsIfAbsent(availableConsonants, lateralObstruentsPresent, IPA.LATERAL_OBSTRUENTS);
-        removeConsonantsIfAbsent(availableConsonants, lateralOthersPresent, IPA.LATERAL_OTHERS);
+        removeConsonantsIfAbsent(availableConsonants, phonology.lPresent, IPA.VD_ALVEOLAR_APPROXIMANT);
+        removeConsonantsIfAbsent(availableConsonants, phonology.lateralObstruentsPresent, IPA.LATERAL_OBSTRUENTS);
+        removeConsonantsIfAbsent(availableConsonants, phonology.lateralOthersPresent, IPA.LATERAL_OTHERS);
 
         // Absence of common consonants
-        removeConsonantsIfAbsent(availableConsonants, bilabialsPresent, IPA.BILABIALS);
-        removeConsonantsIfAbsent(availableConsonants, fricativesPresent, IPA.FRICATIVES);
-        removeConsonantsIfAbsent(availableConsonants, nasalsPresent, IPA.NASALS);
+        removeConsonantsIfAbsent(availableConsonants, phonology.bilabialsPresent, IPA.BILABIALS);
+        removeConsonantsIfAbsent(availableConsonants, phonology.fricativesPresent, IPA.FRICATIVES);
+        removeConsonantsIfAbsent(availableConsonants, phonology.nasalsPresent, IPA.NASALS);
 
         // Uncommon sounds
-        removeConsonantsIfAbsent(availableConsonants, clicksPresent, IPA.CLICKS);
-        removeConsonantsIfAbsent(availableConsonants, labialVelarsPresent, IPA.LABIAL_VELARS);
-        removeConsonantsIfAbsent(availableConsonants, thSoundsPresent, IPA.VL_DENTAL_FRICATIVE, IPA.VD_DENTAL_FRICATIVE);
+        removeConsonantsIfAbsent(availableConsonants, phonology.clicksPresent, IPA.CLICKS);
+        removeConsonantsIfAbsent(availableConsonants, phonology.labialVelarsPresent, IPA.LABIAL_VELARS);
+        removeConsonantsIfAbsent(availableConsonants, phonology.thSoundsPresent, IPA.VL_DENTAL_FRICATIVE, IPA.VD_DENTAL_FRICATIVE);
 
         return availableConsonants;
     }
 
     // Remove a set of consonants from list based on corresponding flag
-    private void removeConsonantsIfAbsent(List<Consonant> originalList, boolean flag, Consonant... soundsToRemove) {
+    private static void removeConsonantsIfAbsent(List<Consonant> originalList, boolean flag, Consonant... soundsToRemove) {
         if (!flag)
             for (Consonant sound : soundsToRemove)
                 originalList.remove(sound);
@@ -272,8 +274,8 @@ public class PhonologyBuilder {
     private static void addConsonant(Consonant consonant, List<Consonant> availableConsonants) {
         if (!availableConsonants.contains(consonant)) return;
 
-        if (!consonants.contains(consonant))
-            consonants.add(consonant);
+        if (!phonology.consonants.contains(consonant))
+            phonology.consonants.add(consonant);
 
         availableConsonants.remove(consonant);
     }
@@ -292,8 +294,8 @@ public class PhonologyBuilder {
         int i = RandomGen.chooseIndexByWeights(random, rWeights);
 
         // Choose random ratio in chosen range, clamp to min, divide into consonant inventory, clamp min and max
-        vowelInventory = (int) Math.min(vMax,
-                Math.max(vMin, Math.round(consonantInventory / Math.max(rMin,
+        phonology.vowelInventory = (int) Math.min(vMax,
+                Math.max(vMin, Math.round(phonology.consonantInventory / Math.max(rMin,
                         (random.nextDouble() * ((i == rValues.length - 1 ? rMax : rValues[i + 1]) - rValues[i])
                                 + rValues[i])))));
     }
@@ -304,20 +306,20 @@ public class PhonologyBuilder {
         List<Vowel> availableVowels = new ArrayList<>(IPA.VOWELS);
 
         // Remove missing sounds
-        if (!nasalVowelContrast)
+        if (!phonology.nasalVowelContrast)
             for (Vowel vowel : IPA.NASAL_VOWELS)
                 availableVowels.remove(vowel);
 
         // Choosing and adding vowels to inventory
-        while (vowels.size() < vowelInventory) {
+        while (phonology.vowels.size() < phonology.vowelInventory) {
             int[] weights = new int[availableVowels.size()];
             for (int i = 0; i < availableVowels.size(); ++i)
                 weights[i] = availableVowels.get(i).weight();
 
             Vowel vowel = availableVowels.get(RandomGen.chooseIndexByWeights(random, weights));
 
-            if (!vowels.contains(vowel))
-                vowels.add(vowel);
+            if (!phonology.vowels.contains(vowel))
+                phonology.vowels.add(vowel);
 
             availableVowels.remove(vowel);
         }

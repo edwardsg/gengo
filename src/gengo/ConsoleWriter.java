@@ -25,23 +25,23 @@ class ConsoleWriter {
     }
 
     private void printConsonants() {
-        System.out.println("Consonants (" + language.phonology.consonantInventory() + "):");
-        for (Consonant consonant : language.phonology.consonants())
+        System.out.println("Consonants (" + language.phonology.consonantInventory + "):");
+        for (Consonant consonant : language.phonology.consonants)
             System.out.println(consonant);
 
         System.out.println();
     }
 
     private void printVowels() {
-        System.out.println("Vowels (" + language.phonology.vowelInventory() + "):");
-        for (Vowel vowel : language.phonology.vowels())
+        System.out.println("Vowels (" + language.phonology.vowelInventory + "):");
+        for (Vowel vowel : language.phonology.vowels)
             System.out.println(vowel);
 
         System.out.println();
     }
 
     private void printSyllableStructure() {
-        System.out.println("Syllable structure: " + language.phonology.syllableStructure());
+        System.out.println("Syllable structure: " + language.phonology.syllableStructure);
         System.out.println();
     }
 

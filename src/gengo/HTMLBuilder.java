@@ -72,18 +72,18 @@ class HTMLBuilder {
 
     private void writeConsonants() throws IOException {
         writer.write("\t\t<p>\n");
-        writer.write("\t\tConsonants (" + language.phonology.consonantInventory() + "): <br>\n");
+        writer.write("\t\tConsonants (" + language.phonology.consonantInventory + "): <br>\n");
 
-        for (Consonant consonant : language.phonology.consonants())
+        for (Consonant consonant : language.phonology.consonants)
             writePhonemeDescription(consonant);
     }
 
     private void writeVowels() throws IOException {
         writer.write("\n");
         writer.write("\t\t<p>\n");
-        writer.write("\t\tVowels (" + language.phonology.vowelInventory() + "): <br>\n");
+        writer.write("\t\tVowels (" + language.phonology.vowelInventory + "): <br>\n");
 
-        for (Vowel vowel : language.phonology.vowels())
+        for (Vowel vowel : language.phonology.vowels)
             writePhonemeDescription(vowel);
     }
 
@@ -104,7 +104,7 @@ class HTMLBuilder {
         writer.write("\t\t<p>\n");
         writer.write("\t\tSyllable structure: <br>\n");
         writer.write(String.format("<font size=\"%d\"> ", HTML_FONT_SIZE));
-        writer.write("" + language.phonology.syllableStructure() + " </font>\n");
+        writer.write("" + language.phonology.syllableStructure + " </font>\n");
     }
 
     private void writeGrammar() throws IOException {
