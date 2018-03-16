@@ -120,21 +120,29 @@ class HTMLBuilder {
         writer.write("\n");
         writer.write("\t\t<p>\n");
         writer.write("\t\tWord roots: <br>\n");
-        for (Map.Entry<Primes.BasicPrime, Root> entry : language.lexicon.roots().entrySet()) {
-            writer.write(entry.getKey().name() + ": ");
 
-            for (char c : entry.getValue().root().toCharArray())
-                writer.write("&#" + (int) c);
+        for (Map.Entry<Primes.BasicPrime, Root> entry : language.lexicon.roots().entrySet())
+            writePrimeRootPair(entry.getKey(), entry.getValue());
+    }
 
-            writer.write(" &nbsp ");
+    private void writePrimeRootPair(Primes.BasicPrime prime, Root root) throws IOException {
+        writer.write(prime.name() + ": ");
+        writeRootSpelling(root);
+        writer.write(" &nbsp ");
+        writeRootIPA(root);
+        writer.write(" <br>\n");
+    }
 
-            writer.write("/");
-            for (char c : entry.getValue().ipa().toCharArray())
-                writer.write("&#" + (int) c);
-            writer.write("/");
+    private void writeRootSpelling(Root root) throws IOException {
+        for (char c : root.root().toCharArray())
+            writer.write("&#" + (int) c);
+    }
 
-            writer.write(" <br>\n");
-        }
+    private void writeRootIPA(Root root) throws IOException {
+        writer.write("/");
+        for (char c : root.ipa().toCharArray())
+            writer.write("&#" + (int) c);
+        writer.write("/");
     }
 
     private void writeFooter() throws IOException {
