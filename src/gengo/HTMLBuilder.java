@@ -54,13 +54,10 @@ class HTMLBuilder {
 
     private void writeBody() throws IOException {
         writer.write("\t<body>\n");
-
         writePhonology();
         writeGrammar();
         writeLexicon();
-
         writeFooter();
-
         writer.write("\t</body>\n");
     }
 
@@ -149,7 +146,6 @@ class HTMLBuilder {
         writer.write("\n");
         writer.write("\t\t<p>\n");
         writer.write("Seed: " + language.seed + "\n");
-
         writer.write("\n");
     }
 }
