@@ -1,6 +1,7 @@
 package gengo;
 
 import java.io.IOException;
+import java.util.Random;
 
 public class LanguageGenerator {
     public static final boolean IPA_SYLLABLE_SEPARATION = true;
@@ -19,7 +20,11 @@ public class LanguageGenerator {
     }
 
     private static void buildLanguage() {
-        language = LanguageBuilder.build();
+        long seed = new Random().nextLong();
+        Random random = new Random(seed);
+        PhonologyBuilder phonologyBuilder = new PhonologyBuilderImpl(random);
+        LanguageBuilderImpl languageBuilder = new LanguageBuilderImpl(random, phonologyBuilder);
+        language = languageBuilder.build();
     }
 
     private static void printToConsole() {
