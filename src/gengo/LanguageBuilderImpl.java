@@ -2,6 +2,7 @@ package gengo;
 
 import gengo.grammar.Grammar;
 import gengo.lexicon.Lexicon;
+import gengo.phonology.PhonologyBuilder;
 
 import java.util.Random;
 

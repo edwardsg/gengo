@@ -1,13 +1,13 @@
-package gengo;
+package gengo.phonology;
 
-import gengo.phonology.*;
+import gengo.RandomGen;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-class PhonologyBuilderImpl implements PhonologyBuilder {
+public class PhonologyBuilderImpl implements PhonologyBuilder {
     // Local data for phonology generation; taken from real-world data but can be changed for specific results
     private static int cMin = Data.MIN_CONSONANT_INVENTORY;
     private static int cMax = Data.MAX_CONSONANT_INVENTORY;
@@ -33,7 +33,7 @@ class PhonologyBuilderImpl implements PhonologyBuilder {
     private List<Consonant> consonantsToAdd;
     private List<Vowel> vowelsToAdd;
 
-    PhonologyBuilderImpl(Random random) {
+    public PhonologyBuilderImpl(Random random) {
         this.random = random;
     }
 

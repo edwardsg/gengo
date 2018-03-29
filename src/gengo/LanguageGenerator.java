@@ -1,5 +1,8 @@
 package gengo;
 
+import gengo.phonology.PhonologyBuilder;
+import gengo.phonology.PhonologyBuilderImpl;
+
 import java.io.IOException;
 import java.util.Random;
 
