@@ -14,16 +14,18 @@ class HTMLBuilder {
     private static final int HTML_FONT_SIZE = 5;
 
     private final Language language;
+    private final long seed;
 
     private String fileName;
     private Writer writer;
 
-    HTMLBuilder(Language language, String fileName) {
+    HTMLBuilder(Language language, long seed, String fileName) {
         this.language = language;
+        this.seed = seed;
         this.fileName = fileName;
     }
 
-    public void build() throws IOException {
+    void build() throws IOException {
         checkFileNameEnding();
         startWriter();
         writePage();
@@ -145,7 +147,7 @@ class HTMLBuilder {
     private void writeFooter() throws IOException {
         writer.write("\n");
         writer.write("\t\t<p>\n");
-        writer.write("Seed: " + language.seed + "\n");
+        writer.write("Seed: " + seed + "\n");
         writer.write("\n");
     }
 }

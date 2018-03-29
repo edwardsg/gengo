@@ -10,12 +10,14 @@ import java.util.Map;
 
 class ConsoleWriter {
     private final Language language;
+    private final long seed;
 
-    ConsoleWriter(Language language) {
+    ConsoleWriter(Language language, long seed) {
         this.language = language;
+        this.seed = seed;
     }
 
-    public void printLanguageDetails() {
+    void printLanguageDetails() {
         printConsonants();
         printVowels();
         printSyllableStructure();
@@ -62,7 +64,7 @@ class ConsoleWriter {
     }
 
     private void printFooter() {
-        System.out.println("Seed: " + language.seed);
+        System.out.println("Seed: " + seed);
         System.out.println();
     }
 }
